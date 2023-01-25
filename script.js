@@ -150,7 +150,6 @@ function errorScreen2(dados){
 
  //  screen number three - create quiz - outset // 
 
-
  function validateImageUrl(imageUrl) {
     if (
       !imageUrl ||
