@@ -230,8 +230,7 @@ function errorScreen2(dados){
         numberOfQuestions: Number(quizzquestions.value),
         numberOfLevels: Number(quizzlevels.value),
       };
-      
-      }`;
+     // a preencher //
     } else {
       alert("Quizz Inválido");
     }
