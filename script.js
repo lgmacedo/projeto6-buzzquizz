@@ -51,7 +51,7 @@ function goToCreateQuiz() {
     const screen1 = document.querySelector('.screennumberone');
     screen1.classList.add('hidden');
 
-    const screen3 = document.querySelector('screennumberthree');
+    const screen3 = document.querySelector('.screennumberthree');
     screen3.classList.remove('hidden');
 
 }
