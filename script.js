@@ -230,9 +230,8 @@ function errorScreen2(dados){
         numberOfQuestions: Number(quizzquestions.value),
         numberOfLevels: Number(quizzlevels.value),
       };
-      window.location.href = `fourthPage.html?quizz=${JSON.stringify(
-        question
-      )}`;
+      
+      }`;
     } else {
       alert("Quizz Inválido");
     }
