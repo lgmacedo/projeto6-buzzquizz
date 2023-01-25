@@ -271,7 +271,38 @@ body{
     line-height: 25px;
 }
 
+.buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.buttonReinit{
+    width: 261px;
+    height: 52px;
+    background-color: #EC362D;
+    border: none;
+    border-radius: 15px;
+    color: #FFF5F4;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 24.61px;
+    margin-bottom: 16px;
+}
+
+.buttonBackHome{
+    width: 220px;
+    height: 44px;
+    background-color: #FAFAFA;
+    border: none;
+    color: #818181;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 24.61px;
+    margin-bottom: 85px;
+}
 
 /* screen number two - play the quiz - end */
 

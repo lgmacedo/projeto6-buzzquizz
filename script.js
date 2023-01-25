@@ -10,6 +10,19 @@ let levels = [];
 
  
 //  screen number two - play the quiz - outset // 
+function quizzReinit(){
+    numberQuestions = 0;
+    numberAnswers = 0;
+    numberCorrect = 0;
+    levels = [];
+    document.querySelector('.screennumbertwo').scrollIntoView();
+    startScreen2();
+}
+
+function backHome(){
+
+}
+
 function finishCheck(){
     const quizScreen = document.querySelector('.screennumbertwo');
     const finalScore = Math.round((numberCorrect/numberQuestions)*100);
@@ -31,6 +44,12 @@ function finishCheck(){
         </div>
     </div>`;
     document.querySelector('.gameScore').scrollIntoView();
+
+    quizScreen.innerHTML += 
+    `<div class="buttons">
+        <button class="buttonReinit" onclick="quizzReinit()">Reiniciar Quizz</button>
+        <button class="buttonBackHome" onclick="backHome()">Voltar pra home</button>
+    </div>`;    
 };
 
 function selectAnswer(resposta){
@@ -68,6 +87,11 @@ function successScreen2(dados){
     console.log(dados);
     const quizScreen = document.querySelector('.screennumbertwo')
     levels = dados.data.levels;
+
+    quizScreen.innerHTML = 
+    `<header class="title-screen" onclick="startScreen2()">
+        <h1>BuzzQuizz</h1>
+    </header>`;
 
     quizScreen.innerHTML += 
     `<div class="img-title">
