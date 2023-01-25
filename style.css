@@ -172,7 +172,6 @@ body{
 
 .question{
     width: 759px;
-    min-height: 676px;
     background-color: #FFFFFF;
     margin: 0 auto 42px;
     padding-top: 28px;
@@ -201,14 +200,12 @@ body{
     display: grid;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
-    background-color: brown;
-    gap: 20px;
-    min-height: 538px;
-    padding: 20px 36.4px 30px;
+    column-gap: 24.3px;
+    row-gap: 18.6px;
+    padding: 20px 36.4px 35px;
 }
 
 .answer{
-    background-color: orange;
     min-height: 50px;
     display: flex;
     flex-direction: column;
@@ -216,6 +213,7 @@ body{
 
 .answer img{
     width: 100%;
+    height: 175px;
 }
 
 .answer p{
