@@ -3,14 +3,67 @@ let numberQuestions = 0;
 let numberAnswers = 0;
 let numberCorrect = 0;
 let levels = [];
+let allQuizzes = [];
 
 // screen number one - quiz list - outset --> //  
+
+function startScreen1() {
+    const promise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
+    promise.then(successScreen1);
+    promise.catch(errorScreen1);
+}
+
+function errorScreen1(response) {
+    console.log("DEU ERRADO!!!");
+    console.log(response);
+}
+
+function successScreen1(response) {
+    console.log("DEU CERTO!!!");
+    console.log(response);
+
+    allQuizzes = response.data;
+
+    listAllQuizes();
+}
+
+function listAllQuizes() {
+    const quizzes = document.querySelector('.all-quizzes .quizzes');
+
+    quizzes.innerHTML = '';
+
+    for (let i = 0; i < allQuizzes.length; i++) {
+
+        const template = `
+        <div class="quizz">
+            <img src="${allQuizzes[i].image}" />
+            <h2 class="quizz-title">${allQuizzes[i].title}</h2>
+          </div>
+        `
+
+        quizzes.innerHTML = quizzes.innerHTML + template;
+    }
+
+
+}
+
+function goToCreateQuiz() {
+    const screen1 = document.querySelector('.screennumberone');
+    screen1.classList.add('hidden');
+
+    const screen3 = document.querySelector('screennumberthree');
+    screen3.classList.remove('hidden');
+
+}
+
+startScreen1();
+
 //  screen number one - quiz list - end --> // 
 
 
- 
+
 //  screen number two - play the quiz - outset // 
-function quizzReinit(){
+function quizzReinit() {
     numberQuestions = 0;
     numberAnswers = 0;
     numberCorrect = 0;
@@ -19,22 +72,22 @@ function quizzReinit(){
     startScreen2();
 }
 
-function backHome(){
+function backHome() {
 
 }
 
-function finishCheck(){
+function finishCheck() {
     const quizScreen = document.querySelector('.screennumbertwo');
-    const finalScore = Math.round((numberCorrect/numberQuestions)*100);
+    const finalScore = Math.round((numberCorrect / numberQuestions) * 100);
     let qualLevel = -1;
-    for(let i = levels.length-1; i>=0; i--){
-        if(levels[i].minValue <= finalScore){
+    for (let i = levels.length - 1; i >= 0; i--) {
+        if (levels[i].minValue <= finalScore) {
             qualLevel = i;
             break;
         }
     }
-    quizScreen.innerHTML += 
-    `<div class = "gameScore">
+    quizScreen.innerHTML +=
+        `<div class = "gameScore">
         <div class = "scoreTitle">
             <p>${finalScore}% de acerto: ${levels[qualLevel].title}</p>
         </div>
@@ -45,63 +98,63 @@ function finishCheck(){
     </div>`;
     document.querySelector('.gameScore').scrollIntoView();
 
-    quizScreen.innerHTML += 
-    `<div class="buttons">
+    quizScreen.innerHTML +=
+        `<div class="buttons">
         <button class="buttonReinit" onclick="quizzReinit()">Reiniciar Quizz</button>
         <button class="buttonBackHome" onclick="backHome()">Voltar pra home</button>
-    </div>`;    
+    </div>`;
 };
 
-function selectAnswer(resposta){
-    if(resposta.parentNode.classList.contains('marked'))
+function selectAnswer(resposta) {
+    if (resposta.parentNode.classList.contains('marked'))
         return;
     resposta.parentNode.classList.add('marked');
     const todasAsRespostas = (resposta.parentNode).querySelectorAll('.answer');
-    if(resposta.classList.contains('true'))
+    if (resposta.classList.contains('true'))
         numberCorrect++;
-    for(let i = 0; i<todasAsRespostas.length; i++){
-        if(todasAsRespostas.item(i).classList.contains('true')){
+    for (let i = 0; i < todasAsRespostas.length; i++) {
+        if (todasAsRespostas.item(i).classList.contains('true')) {
             todasAsRespostas.item(i).querySelector('p').style.color = "#009C22";
-        }else{
+        } else {
             todasAsRespostas.item(i).querySelector('p').style.color = "#FF4B4B";
         }
-        if(todasAsRespostas.item(i)!==resposta)
+        if (todasAsRespostas.item(i) !== resposta)
             todasAsRespostas.item(i).style.opacity = "0.3";
     }
     numberAnswers++;
-    if(numberAnswers === numberQuestions){
+    if (numberAnswers === numberQuestions) {
         setTimeout(finishCheck, 2000);
-    }else{
+    } else {
         setTimeout(`document.querySelector('.question .answer-container:not(.marked)').parentNode.scrollIntoView()`, 2000);
     }
 }
 
-function startScreen2(){
+function startScreen2() {
     const promise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/1");
     promise.then(successScreen2);
     promise.catch(errorScreen2);
 }
 
-function successScreen2(dados){
+function successScreen2(dados) {
     console.log("DEU CERTO!!!");
     console.log(dados);
     const quizScreen = document.querySelector('.screennumbertwo')
     levels = dados.data.levels;
 
-    quizScreen.innerHTML = 
-    `<header class="title-screen" onclick="startScreen2()">
+    quizScreen.innerHTML =
+        `<header class="title-screen" onclick="startScreen2()">
         <h1>BuzzQuizz</h1>
     </header>`;
 
-    quizScreen.innerHTML += 
-    `<div class="img-title">
+    quizScreen.innerHTML +=
+        `<div class="img-title">
         <img src="${dados.data.image}">
         <p>${dados.data.title}</p>
     </div>`;
 
     const arrQuestions = dados.data.questions;
     numberQuestions = arrQuestions.length;
-    for(let i = 0; i<arrQuestions.length; i++){
+    for (let i = 0; i < arrQuestions.length; i++) {
         const arrAnswers = arrQuestions[i].answers;
         for (let i = arrAnswers.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1));
@@ -111,7 +164,7 @@ function successScreen2(dados){
         }
 
         quizScreen.innerHTML +=
-        `<div class="question">
+            `<div class="question">
             <div class="question-title">
                 <p>${arrQuestions[i].title}</p>
             </div>
@@ -139,7 +192,7 @@ function successScreen2(dados){
     }
 }
 
-function errorScreen2(dados){
+function errorScreen2(dados) {
     console.log("DEU ERRADO!!!");
     console.log(dados);
 }
@@ -149,6 +202,7 @@ function errorScreen2(dados){
 
 
  //  screen number three - create quiz - outset // 
+
 
  function validateImageUrl(imageUrl) {
     if (
