@@ -137,7 +137,7 @@ function selectAnswer(resposta) {
 }
 
 function startScreen2(qual) {
-    const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/1`);
+    const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/2`);
     promise.then(successScreen2);
     promise.catch(errorScreen2);
 }
@@ -156,6 +156,8 @@ function successScreen2(dados) {
         `<header class="title-screen" onclick="startScreen2()">
         <h1>BuzzQuizz</h1>
     </header>`;
+
+    quizScreen.querySelector('header').scrollIntoView();
 
     quizScreen.innerHTML +=
         `<div class="img-title">
