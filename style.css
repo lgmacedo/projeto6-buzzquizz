@@ -169,6 +169,63 @@ body{
     margin-right: -50%;
     transform: translate(-50%, -50%)
 }
+
+.question{
+    width: 759px;
+    min-height: 676px;
+    background-color: #FFFFFF;
+    margin: 0 auto 42px;
+    padding-top: 28px;
+}
+
+.question-title{
+    width: 688px;
+    min-height: 138px;
+    margin: 0 auto;
+    background-color: blue;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.question-title p{
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 27px;
+}
+
+.answer-container{
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    background-color: brown;
+    gap: 20px;
+    min-height: 538px;
+    padding: 20px 36.4px 30px;
+}
+
+.answer{
+    background-color: orange;
+    min-height: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.answer img{
+    width: 100%;
+}
+
+.answer p{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23.44px;
+    color: black;
+    margin-top: 10px;
+}
 /* screen number two - play the quiz - end */
 
 
