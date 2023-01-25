@@ -9,12 +9,9 @@ let numberCorrect = 0;
 
  
 //  screen number two - play the quiz - outset // 
-function quizCheck(){
-    console.log(`numero de perguntas: ${numberQuestions} xxx numero de respostas: ${numberAnswers}`);
-    console.log(`numero de corretas: ${numberCorrect}`);
-    if(numberAnswers === numberQuestions){
-
-    }
+function finishCheck(){
+    const quizScreen = document.querySelector('.screennumbertwo');
+    quizScreen.innerHTML += "FIM DE JOGO!!!!!";
 };
 
 function selectAnswer(resposta){
@@ -34,7 +31,11 @@ function selectAnswer(resposta){
             todasAsRespostas.item(i).style.opacity = "0.3";
     }
     numberAnswers++;
-    quizCheck();
+    if(numberAnswers === numberQuestions){
+        finishCheck();
+    }else{
+        setInterval(`document.querySelector('.question .answer-container:not(.marked)').parentNode.scrollIntoView()`, 2000);
+    }
 }
 
 function startScreen2(){
