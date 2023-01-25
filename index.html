@@ -172,7 +172,61 @@
 
   <!-- screen number four - create questions - outset -->
 
-  <div class="screennumberfour"></div>
+  <div class="screennumberfour">
+
+    <!-- page header - outset-->  
+
+    <header class="title-screen">
+      <h1>BuzzQuizz</h1>
+    </header>
+
+  <!-- page header - end-->  
+
+
+    <div class="containerscreennumberfour">
+      <div class="QuestionsCreator">
+          <div class="titlescreennumberfour">
+              <h4>Crie suas perguntas</h4>
+          </div>
+          <div class="Questions">
+            <!-- cut from here-->
+            <li class="subcontainer">
+              <div class="QuestionNumber">
+                  <div class="QuestionWindow">
+                  <div class="ToClick">
+                    <h3>Pergunta</h3>
+                    <ion-icon name="create-outline" onclick="openandhide(this)"></ion-icon>
+                  </div>
+                  <div class="QuestionConfig">
+                    <input class="questionTitle" placeholder="Texto da pergunta" type="text" />
+                    <input class="questionColor" placeholder="Cor de fundo da pergunta" type="text" />
+                  </div>
+                </div>
+              </div>
+              <div class="QuizzAnswers">
+                  <h3>Resposta Correta</h3>
+                  <input class="answerquestionsscreen" placeholder="Resposta Correta" type="text" />
+                  <input class="image-url" placeholder="URL da imagem" type="url" />
+              </div>
+              <div class="WrongAnswers">
+                  <h3>Resposta Incorreta</h3>
+                  <input class="answerquestionsscreen" placeholder="Resposta Incorreta" type="text" />
+                  <input class="image-url two" placeholder="URL da imagem" type="url" />
+                  <input class="answerquestionsscreen" placeholder="Resposta Incorreta 2" type="text" />
+                  <input class="image-url two" placeholder="URL da imagem 2" type="url" />
+                  <input class="answerquestionsscreen" placeholder="Resposta Incorreta 3" type="text" />
+                  <input class="image-url two" placeholder="URL da imagem 3" type="url" />
+              </div>
+          </li>
+          <!-- finish cut here-->
+          </div>
+      </div>
+  </div>
+  <div class="buttomtwo">
+      <button onclick="proceedToLevels()">Prosseguir para criar níveis</button>
+  </div>
+
+  </div>
 
   <!-- screen number four - create questions - end -->
 

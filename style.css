@@ -281,8 +281,9 @@ input{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 35%;
 }
-button{
+.thebutton button{
     background-color: #EC362D;
     height: 54px;
     width: 368px;
@@ -303,6 +304,146 @@ button{
 
 
 /* screen number four - create questions - outset */
+
+.containerscreennumberfour {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  h4 {
+    margin-bottom: 38px;
+  }
+  
+  .QuestionsCreator {
+    margin-top: 132px;
+  }
+  .QuestionsCreator h4 {
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 27px;
+    color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .titlescreennumberfour{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .subcontainer {
+    background-color: #ffffff;
+    box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
+    margin-bottom: 38px;
+    max-height: 1500px;
+    transition: max-height 500ms;
+  }
+  
+  .QuestionNumber {
+    margin-top: 0px;
+  }
+  .ToClick {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 27px;
+    margin-left: 19px;
+    margin-right: 17px;
+    margin-bottom: 12px;
+  }
+  
+  .ToClick h3 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 23px;
+  }
+  ion-icon {
+    height: 23px;
+    width: 25px;
+    display: none;
+    cursor: pointer;
+  }
+  .QuestionConfig {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  input {
+    width: 564px;
+    height: 46px;
+    border-radius: 5px;
+    border: solid 1px #d1d1d1;
+    background-color: #ffffff;
+    color: #bababa;
+    font-style: italic;
+    line-height: 22px;
+    font-size: 19px;
+    font-weight: 400;
+    margin-left: 19px;
+    margin-right: 17px;
+    margin-bottom: 5px;
+    padding-left: 23px;
+  }
+
+   .two{
+    margin-bottom: 5%;
+  }
+  
+  .QuizzAnswers {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .QuizzAnswers h3 {
+    margin-left: 19px;
+    margin-right: 17px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 23px;
+    margin-top: 28px;
+    margin-bottom: 14px;
+    background-color: #ffffff;
+  }
+  
+  .WrongAnswers {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .WrongAnswers h3 {
+    margin-left: 19px;
+    margin-right: 17px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 23px;
+    margin-top: 28px;
+    margin-bottom: 14px;
+  }
+  
+  .buttomtwo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25%;
+  }
+  .buttomtwo button {
+    background-color: #ec362d;
+    height: 54px;
+    width: 368px;
+    border-radius: 15px;
+    margin-top: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 25px;
+    color: #fff5f4;
+    cursor: pointer;
+  }
+  
+  
 /* screen number four - create questions - end */
 
 
