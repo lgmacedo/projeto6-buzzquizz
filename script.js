@@ -2,6 +2,7 @@
 let numberQuestions = 0;
 let numberAnswers = 0;
 let numberCorrect = 0;
+let levels = [];
 
 // screen number one - quiz list - outset --> //  
 //  screen number one - quiz list - end --> // 
@@ -11,7 +12,25 @@ let numberCorrect = 0;
 //  screen number two - play the quiz - outset // 
 function finishCheck(){
     const quizScreen = document.querySelector('.screennumbertwo');
-    quizScreen.innerHTML += "FIM DE JOGO!!!!!";
+    const finalScore = Math.round((numberCorrect/numberQuestions)*100);
+    let qualLevel = -1;
+    for(let i = levels.length-1; i>=0; i--){
+        if(levels[i].minValue <= finalScore){
+            qualLevel = i;
+            break;
+        }
+    }
+    quizScreen.innerHTML += 
+    `<div class = "gameScore">
+        <div class = "scoreTitle">
+            <p>${finalScore}% de acerto: ${levels[qualLevel].title}</p>
+        </div>
+        <div class="scoreContainer">
+            <img src="${levels[qualLevel].image}">
+            <p>${levels[qualLevel].text}</p>
+        </div>
+    </div>`;
+    document.querySelector('.gameScore').scrollIntoView();
 };
 
 function selectAnswer(resposta){
@@ -32,14 +51,14 @@ function selectAnswer(resposta){
     }
     numberAnswers++;
     if(numberAnswers === numberQuestions){
-        finishCheck();
+        setTimeout(finishCheck, 2000);
     }else{
-        setInterval(`document.querySelector('.question .answer-container:not(.marked)').parentNode.scrollIntoView()`, 2000);
+        setTimeout(`document.querySelector('.question .answer-container:not(.marked)').parentNode.scrollIntoView()`, 2000);
     }
 }
 
 function startScreen2(){
-    const promise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/2");
+    const promise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/1");
     promise.then(successScreen2);
     promise.catch(errorScreen2);
 }
@@ -48,6 +67,7 @@ function successScreen2(dados){
     console.log("DEU CERTO!!!");
     console.log(dados);
     const quizScreen = document.querySelector('.screennumbertwo')
+    levels = dados.data.levels;
 
     quizScreen.innerHTML += 
     `<div class="img-title">
