@@ -1,12 +1,12 @@
 .hidden {
-    display: hidden;
+    display: none;
 }
 
-*{
+* {
     box-sizing: border-box;
 }
 
-body{
+body {
     background-color: #FAFAFA;
 }
 
@@ -103,7 +103,7 @@ body{
 .quizzes {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .quizz img {
@@ -117,9 +117,10 @@ body{
     width: 340px;
     height: 181px;
     margin-bottom: 12px;
+    margin-right: 10px;
 }
 
-.quizz h2 {
+.quizz .quizz-title {
     width: 100%;
     color: #FFFFFF;
     font-family: 'Roboto';
@@ -127,8 +128,10 @@ body{
     font-size: 19px;
     line-height: 22px;
     position: absolute;
-    left: 18px;
-    bottom: 7px;
+    left: 0px;
+    bottom: 0px;
+    padding: 0 0 15px 15px;
+    background-image: linear-gradient(to bottom, rgb(0, 0, 0, 0), rgb(0, 0, 0, 1));
 }
 
 .top-your-quizzes {
@@ -143,21 +146,21 @@ body{
 
 /* screen number two - play the quiz - outset */
 
-.img-title{
+.img-title {
     height: 227px;
     background: black;
     position: relative;
     margin-bottom: 42px;
 }
 
-.img-title img{
+.img-title img {
     height: 100%;
     width: 100%;
     object-fit: cover;
     opacity: 0.6;
 }
 
-.img-title p{
+.img-title p {
     color: #FFFFFF;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
@@ -170,24 +173,25 @@ body{
     transform: translate(-50%, -50%)
 }
 
-.question{
+.question {
     width: 759px;
     background-color: #FFFFFF;
     margin: 0 auto 42px;
     padding-top: 28px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
 }
 
-.question-title{
+.question-title {
     width: 688px;
     min-height: 138px;
     margin: 0 auto;
     background-color: blue;
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.question-title p{
+.question-title p {
     color: #FFFFFF;
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
@@ -195,7 +199,7 @@ body{
     line-height: 27px;
 }
 
-.answer-container{
+.answer-container {
     height: 100%;
     display: grid;
     grid-template-rows: 1fr 1fr;
@@ -205,18 +209,18 @@ body{
     padding: 20px 36.4px 35px;
 }
 
-.answer{
+.answer {
     min-height: 50px;
     display: flex;
     flex-direction: column;
 }
 
-.answer img{
+.answer img {
     width: 100%;
     height: 175px;
 }
 
-.answer p{
+.answer p {
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     font-size: 20px;
@@ -224,13 +228,92 @@ body{
     color: black;
     margin-top: 10px;
 }
+
+.gameScore {
+    width: 759px;
+    background-color: #FFFFFF;
+    margin: 0 auto 57px;
+    padding-top: 18px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
+
+.scoreTitle {
+    width: 727px;
+    min-height: 99px;
+    margin: 0 auto;
+    background-color: #EC362D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scoreTitle p {
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 27px;
+}
+
+.scoreContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 21px;
+    padding: 18px 18px 22px;
+}
+
+.scoreContainer img {
+    width: 100%;
+}
+
+.scoreContainer p {
+    color: #484848;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 25px;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttonReinit{
+    width: 261px;
+    height: 52px;
+    background-color: #EC362D;
+    border: none;
+    border-radius: 15px;
+    color: #FFF5F4;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 24.61px;
+    margin-bottom: 16px;
+}
+
+.buttonBackHome{
+    width: 220px;
+    height: 44px;
+    background-color: #FAFAFA;
+    border: none;
+    color: #818181;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 24.61px;
+    margin-bottom: 85px;
+}
+
 /* screen number two - play the quiz - end */
 
 
 
 /* screen number three - create quiz - outset */
 
-.containerscreennumberthree{
+.containerscreennumberthree {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -241,10 +324,10 @@ body{
     justify-content: center;
 }
 
-.necessaryinformations{
+.necessaryinformations {
     margin-top: 27px;
     width: 600px;
-    height: 256px; 
+    height: 256px;
     box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
@@ -253,11 +336,12 @@ body{
     background-color: #FFFFFF;
     padding-left: 16px;
 }
-input{
+
+input {
     width: 564px;
     height: 46px;
     border-radius: 5px;
-    border:  solid 1px #D1D1D1;
+    border: solid 1px #D1D1D1;
     background-color: #FFFFFF;
     color: #BABABA;
     font-style: italic;
@@ -267,7 +351,8 @@ input{
     margin-bottom: 5px;
     padding-left: 23px;
 }
-.QuizzCreator h3{
+
+.QuizzCreator h3 {
     margin-top: 140px;
     font-family: Roboto;
     font-size: 23px;
@@ -275,13 +360,15 @@ input{
     line-height: 27px;
     color: #000000;
 }
-.thebutton{
+
+.thebutton {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 35%;
 }
-.thebutton button{
+
+.thebutton button {
     background-color: #EC362D;
     height: 54px;
     width: 368px;
@@ -307,16 +394,17 @@ input{
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  h4 {
+}
+
+h4 {
     margin-bottom: 38px;
-  }
-  
-  .QuestionsCreator {
+}
+
+.QuestionsCreator {
     margin-top: 132px;
-  }
-  .QuestionsCreator h4 {
+}
+
+.QuestionsCreator h4 {
     font-size: 23px;
     font-weight: 700;
     line-height: 27px;
@@ -324,50 +412,53 @@ input{
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
 
-  .titlescreennumberfour{
+.titlescreennumberfour {
     display: flex;
     justify-content: center;
-  }
-  
-  .subcontainer {
+}
+
+.subcontainer {
     background-color: #ffffff;
     box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
     margin-bottom: 38px;
     max-height: 1500px;
     transition: max-height 500ms;
-  }
-  
-  .QuestionNumber {
+}
+
+.QuestionNumber {
     margin-top: 0px;
-  }
-  .ToClick {
+}
+
+.ToClick {
     display: flex;
     justify-content: space-between;
     padding-top: 27px;
     margin-left: 19px;
     margin-right: 17px;
     margin-bottom: 12px;
-  }
-  
-  .ToClick h3 {
+}
+
+.ToClick h3 {
     font-size: 20px;
     font-weight: 700;
     line-height: 23px;
-  }
-  ion-icon {
+}
+
+ion-icon {
     height: 23px;
     width: 25px;
     display: none;
     cursor: pointer;
-  }
-  .QuestionConfig {
+}
+
+.QuestionConfig {
     display: flex;
     flex-direction: column;
-  }
-  
-  input {
+}
+
+input {
     width: 564px;
     height: 46px;
     border-radius: 5px;
@@ -382,18 +473,18 @@ input{
     margin-right: 17px;
     margin-bottom: 5px;
     padding-left: 23px;
-  }
+}
 
-   .two{
+.two {
     margin-bottom: 5%;
-  }
-  
-  .QuizzAnswers {
+}
+
+.QuizzAnswers {
     display: flex;
     flex-direction: column;
-  }
-  
-  .QuizzAnswers h3 {
+}
+
+.QuizzAnswers h3 {
     margin-left: 19px;
     margin-right: 17px;
     font-size: 20px;
@@ -402,14 +493,14 @@ input{
     margin-top: 28px;
     margin-bottom: 14px;
     background-color: #ffffff;
-  }
-  
-  .WrongAnswers {
+}
+
+.WrongAnswers {
     display: flex;
     flex-direction: column;
-  }
-  
-  .WrongAnswers h3 {
+}
+
+.WrongAnswers h3 {
     margin-left: 19px;
     margin-right: 17px;
     font-size: 20px;
@@ -417,15 +508,16 @@ input{
     line-height: 23px;
     margin-top: 28px;
     margin-bottom: 14px;
-  }
-  
-  .buttomtwo {
+}
+
+.buttomtwo {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 25%;
-  }
-  .buttomtwo button {
+}
+
+.buttomtwo button {
     background-color: #ec362d;
     height: 54px;
     width: 368px;
@@ -439,9 +531,9 @@ input{
     line-height: 25px;
     color: #fff5f4;
     cursor: pointer;
-  }
-  
-  
+}
+
+
 /* screen number four - create questions - end */
 
 
