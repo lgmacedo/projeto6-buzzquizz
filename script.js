@@ -346,6 +346,8 @@ function proceedpage() {
     } else {
         alert("Quizz Inválido");
     }
+
+    showInputsQuestions();
 }
 
 
@@ -354,7 +356,50 @@ function proceedpage() {
 
 
 // screen number four - create questions - outset // 
-//  screen number four - create questions - end // 
+
+function showInputsQuestions() {
+
+    const numQuestions = question.numberOfQuestions;
+
+    const showInputWrongAnswer = document.querySelector('.WrongAnswer');
+
+    showInputWrongAnswer.innerHTML = '';
+
+    if (numQuestions === 2) {
+        const template = `
+        <h3>Respostas incorretas</h3>
+        <input id="wrongAnswer1" placeholder="Resposta incorreta 1" type="text" />
+        <input id="imagewrongAnswer1" placeholder="URL da imagem 1" type="url" />
+        `
+    } else if (numQuestions === 3) {
+        const template = `
+        <h3>Respostas incorretas</h3>
+              <input id="wrongAnswer1" placeholder="Resposta incorreta 1" type="text" />
+              <input id="imagewrongAnswer1" placeholder="URL da imagem 1" type="url" />
+              <input id="wrongAnswer2" placeholder="Resposta incorreta 2" type="text" />
+              <input id="imagewrongAnswer2" placeholder="URL da imagem 2" type="url" />`
+    } else if (numQuestions === 4) {
+        const template = `
+        <<h3>Respostas incorretas</h3>
+        <input id="wrongAnswer1" placeholder="Resposta incorreta 1" type="text" />
+        <input id="imagewrongAnswer1" placeholder="URL da imagem 1" type="url" />
+        <input id="wrongAnswer2" placeholder="Resposta incorreta 2" type="text" />
+        <input id="imagewrongAnswer2" placeholder="URL da imagem 2" type="url" />
+        <input id="wrongAnswer3" placeholder="Resposta incorreta 3" type="text" />
+        <input id="imagewrongAnswer3" placeholder="URL da imagem 3" type="url" />`
+    }
+}
+
+function getInputsQuestions() {
+
+    const questionTitle = document.getElementById("questionTitle").value;
+    const questionColor = document.getElementById("questionColor").value;
+    const textCorretAnswer = document.getElementById("corretAnswer").value;
+    const imageCorrectAnswer = document.getElementById("imageCorrectAnswer").value;
+    const textWrongAnswer = document.getElementById("wrongAnswer").value;
+    const imageWrongtAnswer = document.getElementById("imageWrongAnswer").value;
+}
+ //  screen number four - create questions - end //
 
 
 
