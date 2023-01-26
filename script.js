@@ -7,6 +7,7 @@ let allQuizzes = [];
 let idCurrentQuizz = 0;
 
 let newQuizz = {};
+let userQuizzes = [];
 
 // screen number one - quiz list - outset --> //  
 
@@ -31,23 +32,63 @@ function successScreen1(response) {
 }
 
 function listAllQuizes() {
+
+    const userQuizzesIdsSerializado = localStorage.getItem("userQuizzesIds");
+
+    console.log(userQuizzesIdsSerializado);
+
+    const userQuizIdArr = JSON.parse(userQuizzesIdsSerializado);
+
     const quizzes = document.querySelector('.all-quizzes .quizzes');
+
+    const yourQuizzes = document.querySelector('.your-quizzes .quizzes');
 
     quizzes.innerHTML = '';
 
-    for (let i = 0; i < allQuizzes.length; i++) {
+    yourQuizzes.innerHTML = '';
 
-        const template = `
+    if (userQuizzesIdsSerializado === null) {
+
+        for (let i = 0; i < allQuizzes.length; i++) {
+
+            const template = `
         <div class="quizz" onclick="startScreen2(${allQuizzes[i].id})">
             <img src="${allQuizzes[i].image}" />
             <h2 class="quizz-title">${allQuizzes[i].title}</h2>
           </div>
         `
 
-        quizzes.innerHTML = quizzes.innerHTML + template;
+            quizzes.innerHTML = quizzes.innerHTML + template;
+        }
+    } else {
+        document.querySelector('.box-none-quiz').classList.add('hidden');
+        document.querySelector('.your-quizzes').classList.remove('hidden');
+
+        for (let i = 0; i < allQuizzes.length; i++) {
+
+            for (let j = 0; j < userQuizIdArr.length; j++) {
+                if (allQuizzes[i].id == userQuizIdArr[j]) {
+                    const templateYourQuizzes = `
+                    <div class="quizz" onclick="startScreen2(${allQuizzes[i].id})">
+                    <img src="${allQuizzes[i].image}" />
+                    <h2 class="quizz-title">${allQuizzes[i].title}</h2>
+                    </div>
+                    `
+
+                    yourQuizzes.innerHTML = yourQuizzes.innerHTML + templateYourQuizzes;
+                } else {
+                    const templateAllQuizzes = `
+                    <div class="quizz" onclick="startScreen2(${allQuizzes[i].id})">
+                    <img src="${allQuizzes[i].image}" />
+                    <h2 class="quizz-title">${allQuizzes[i].title}</h2>
+                    </div>
+                    `
+
+                    quizzes.innerHTML = quizzes.innerHTML + templateAllQuizzes;
+                }
+            }
+        }
     }
-
-
 }
 
 function goToCreateQuiz() {
@@ -136,9 +177,9 @@ function selectAnswer(resposta) {
     if (numberAnswers === numberQuestions) {
         setTimeout(finishCheck, 2000);
     } else {
-        if(todasAsRespostas.length === 2){
+        if (todasAsRespostas.length === 2) {
             setTimeout(`document.querySelector('.question .answer-container-2:not(.marked)').parentNode.scrollIntoView()`, 2000);
-        }else{
+        } else {
             setTimeout(`document.querySelector('.question .answer-container-3-4:not(.marked)').parentNode.scrollIntoView()`, 2000);
         }
     }
@@ -288,7 +329,7 @@ function showError(error) {
     document.querySelector("#quizzlevels").value = "";
 }
 
-function QuizzConfig(){
+function QuizzConfig() {
     let quizztitle = document.querySelector("#quizztitle").value;
     let quizzimg = document.querySelector("#quizzimg").value;
     let quizzquestions = document.querySelector("#quizzquestions").value;
@@ -297,28 +338,28 @@ function QuizzConfig(){
     quizzquestions = Number(quizzquestions);
     quizzlevels = Number(quizzlevels);
 
-   if(!(quizztitle.length >= 20 && quizztitle.length <= 65)) {
-    showError("Título do Quiz Inválido");
-    return false;
-   }
-   if(validateImageUrl(quizzimg)===false){
-    showError("Imagem Não é um URL");
-    return false;
-   }
-   if(quizzquestions < 3){
-    showError("Número de Perguntas Inválido");
-    return false;
-   }
-   if(quizzlevels < 2){
-    showError("Número de Níveis Inválido");
-    return false;
-   }else{
-    return true;
-   }
+    if (!(quizztitle.length >= 20 && quizztitle.length <= 65)) {
+        showError("Título do Quiz Inválido");
+        return false;
+    }
+    if (validateImageUrl(quizzimg) === false) {
+        showError("Imagem Não é um URL");
+        return false;
+    }
+    if (quizzquestions < 3) {
+        showError("Número de Perguntas Inválido");
+        return false;
+    }
+    if (quizzlevels < 2) {
+        showError("Número de Níveis Inválido");
+        return false;
+    } else {
+        return true;
+    }
 }
 
-function proceedpage(){
-    if(QuizzConfig() === true){
+function proceedpage() {
+    if (QuizzConfig() === true) {
         newQuizz.title = document.querySelector("#quizztitle").value;
         newQuizz.image = document.querySelector("#quizzimg").value;
         newQuizz.questions = [];
@@ -341,14 +382,14 @@ function showInputsQuestions() {
 
     const numQuestions = Number(document.querySelector("#quizzquestions").value);
 
-    for(let i = 0; i<numQuestions; i++){
-        if(i===0){
-        document.querySelector('.Questions').innerHTML +=
-        `<div class="subcontainer">
+    for (let i = 0; i < numQuestions; i++) {
+        if (i === 0) {
+            document.querySelector('.Questions').innerHTML +=
+                `<div class="subcontainer">
         <div class="QuestionNumber">
           <div class="QuestionWindow">
             <div class="ToClick">
-              <h3>Pergunta ${i+1}</h3>
+              <h3>Pergunta ${i + 1}</h3>
               <ion-icon class = "hidden" name="create-outline"></ion-icon>
             </div>
             <div class="QuestionConfig">
@@ -372,13 +413,13 @@ function showInputsQuestions() {
           <input id="imagewrongAnswer3" placeholder="URL da imagem 3" type="url" />
         </div>
         </div>`;
-        }else{
-        document.querySelector('.Questions').innerHTML +=
-        `<div class="subcontainer" onclick="openQuestion(this)">
+        } else {
+            document.querySelector('.Questions').innerHTML +=
+                `<div class="subcontainer" onclick="openQuestion(this)">
             <div class="QuestionNumber">
                 <div class="QuestionWindow">
                     <div class="ToClick">
-                        <h3>Pergunta ${i+1}</h3>
+                        <h3>Pergunta ${i + 1}</h3>
                         <ion-icon name="create-outline"></ion-icon>
                     </div>
                 <div class="hidden">
@@ -410,8 +451,8 @@ function showInputsQuestions() {
     }
 }
 
-function openQuestion(qual){
-    if(qual.classList.contains('markedQ'))
+function openQuestion(qual) {
+    if (qual.classList.contains('markedQ'))
         return;
     qual.querySelector('.hidden').classList.remove('hidden');
     qual.querySelector('.hidden').classList.remove('hidden');
@@ -419,44 +460,46 @@ function openQuestion(qual){
     qual.classList.add('markedQ');
 }
 
-function proceedToLevels(){
+function proceedToLevels() {
     const allQuestions = document.querySelectorAll('.subcontainer');
-    for(let i=0; i<allQuestions.length; i++){
-        if((allQuestions[i].querySelector('#questionTitle').value).length < 20){
+    for (let i = 0; i < allQuestions.length; i++) {
+        if ((allQuestions[i].querySelector('#questionTitle').value).length < 20) {
             alert("Preencha os dados corretamente");
             return;
         }
-        if((allQuestions[i].querySelector('#questionColor').value).length !== 7 ||
-            (allQuestions[i].querySelector('#questionColor').value).charAt(0)!=='#'){
+        if ((allQuestions[i].querySelector('#questionColor').value).length !== 7 ||
+            (allQuestions[i].querySelector('#questionColor').value).charAt(0) !== '#') {
             alert("Preencha os dados corretamente");
             return;
         }
-        if((allQuestions[i].querySelector('#correctAnswer').value) === ""){
+        if ((allQuestions[i].querySelector('#correctAnswer').value) === "") {
             alert("Preencha os dados corretamente");
             return;
         }
-        if(validateImageUrl(allQuestions[i].querySelector('#imageCorrectAnswer').value) === false){
+        if (validateImageUrl(allQuestions[i].querySelector('#imageCorrectAnswer').value) === false) {
             alert("Preencha os dados corretamente");
             return;
         }
-        if((allQuestions[i].querySelector('#wrongAnswer1').value) === ""){
+        if ((allQuestions[i].querySelector('#wrongAnswer1').value) === "") {
             alert("Preencha os dados corretamente");
             return;
         }
-        if(validateImageUrl(allQuestions[i].querySelector('#imagewrongAnswer1').value) === false){
+        if (validateImageUrl(allQuestions[i].querySelector('#imagewrongAnswer1').value) === false) {
             alert("Preencha os dados corretamente");
             return;
         }
     }
-    for(let i=0; i<allQuestions.length; i++){
-        let questObj = {title:allQuestions[i].querySelector('#questionTitle').value,
-                            color:allQuestions[i].querySelector('#questionColor').value};
+    for (let i = 0; i < allQuestions.length; i++) {
+        let questObj = {
+            title: allQuestions[i].querySelector('#questionTitle').value,
+            color: allQuestions[i].querySelector('#questionColor').value
+        };
 
         let answersArr = [];
-        answersArr.push({text:allQuestions[i].querySelector('#correctAnswer').value, image:allQuestions[i].querySelector('#imageCorrectAnswer').value, isCorrectAnswer: true});
-        for(let j=1; j<=3; j++){
-            if(allQuestions[i].querySelector(`#wrongAnswer${j}`).value !== "" && validateImageUrl(allQuestions[i].querySelector(`#imagewrongAnswer${j}`).value)===true){
-                answersArr.push({text:allQuestions[i].querySelector(`#wrongAnswer${j}`).value, image:allQuestions[i].querySelector(`#imagewrongAnswer${j}`).value, isCorrectAnswer: false});
+        answersArr.push({ text: allQuestions[i].querySelector('#correctAnswer').value, image: allQuestions[i].querySelector('#imageCorrectAnswer').value, isCorrectAnswer: true });
+        for (let j = 1; j <= 3; j++) {
+            if (allQuestions[i].querySelector(`#wrongAnswer${j}`).value !== "" && validateImageUrl(allQuestions[i].querySelector(`#imagewrongAnswer${j}`).value) === true) {
+                answersArr.push({ text: allQuestions[i].querySelector(`#wrongAnswer${j}`).value, image: allQuestions[i].querySelector(`#imagewrongAnswer${j}`).value, isCorrectAnswer: false });
             }
         }
         questObj.answers = answersArr;
@@ -467,22 +510,22 @@ function proceedToLevels(){
     document.querySelector('.screennumberfive').classList.remove('hidden');
     showInputsLevels();
 }
- //  screen number four - create questions - end //
+//  screen number four - create questions - end //
 
 
 
 //  screen number five - create levels - outset // 
 
-function showInputsLevels(){
+function showInputsLevels() {
     numLevels = Number(document.querySelector("#quizzlevels").value);
-    for(let i = 0; i<numLevels; i++){
-        if(i===0){
-            document.querySelector('.Levels').innerHTML += 
-            `<div class="subcontainer2" onclick="openLevel(this)">
+    for (let i = 0; i < numLevels; i++) {
+        if (i === 0) {
+            document.querySelector('.Levels').innerHTML +=
+                `<div class="subcontainer2" onclick="openLevel(this)">
             <div class="LevelNumber">
               <div class="LevelWindow">
                 <div class="ToClickTwo">
-                  <h3>Nível ${i+1}</h3>
+                  <h3>Nível ${i + 1}</h3>
                   <ion-icon class="hidden"onclick="openadhide(this)" name="create-outline"></ion-icon>
                 </div>
               </div>
@@ -493,13 +536,13 @@ function showInputsLevels(){
                 <input placeholder="Descrição do nível" type="text">
               </div>
             </div> `;
-        }else{
-            document.querySelector('.Levels').innerHTML += 
-            `<div class="subcontainer2" onclick="openLevel(this)">
+        } else {
+            document.querySelector('.Levels').innerHTML +=
+                `<div class="subcontainer2" onclick="openLevel(this)">
                 <div class="LevelNumber">
                     <div class="LevelWindow">
                         <div class="ToClickTwo">
-                            <h3>Nível ${i+1}</h3>
+                            <h3>Nível ${i + 1}</h3>
                             <ion-icon name="create-outline"></ion-icon>
                         </div>
                     </div>
@@ -513,52 +556,54 @@ function showInputsLevels(){
                     </div>
             </div> `;
         }
-    
+
     }
 }
 
-function openLevel(qual){
-    if(qual.classList.contains('markedQ'))
+function openLevel(qual) {
+    if (qual.classList.contains('markedQ'))
         return;
     qual.querySelector('.hidden').classList.remove('hidden');
     qual.querySelector('ion-icon').classList.add('hidden');
     qual.classList.add('markedQ');
 }
 
-function createQuizz(){
+function createQuizz() {
     let somaAux = 0;
     const allLevels = document.querySelectorAll('.subcontainer2');
-    for(let i=0; i<allLevels.length; i++){
-        if((allLevels[i].querySelector('.LevelConfig input:nth-child(1)').value).length < 10){
+    for (let i = 0; i < allLevels.length; i++) {
+        if ((allLevels[i].querySelector('.LevelConfig input:nth-child(1)').value).length < 10) {
             alert("Preencha os dados corretamente");
             return;
         }
-        if(Number(allLevels[i].querySelector('.LevelConfig input:nth-child(2)').value)<0 ||
-             Number(allLevels[i].querySelector('.LevelConfig input:nth-child(2)').value)>100){
+        if (Number(allLevels[i].querySelector('.LevelConfig input:nth-child(2)').value) < 0 ||
+            Number(allLevels[i].querySelector('.LevelConfig input:nth-child(2)').value) > 100) {
             alert("Preencha os dados corretamente");
             return;
         }
-        if(Number(allLevels[i].querySelector('.LevelConfig input:nth-child(2)').value) === 0 ){
+        if (Number(allLevels[i].querySelector('.LevelConfig input:nth-child(2)').value) === 0) {
             somaAux++;
         }
-        if(validateImageUrl(allLevels[i].querySelector('.LevelConfig input:nth-child(3)').value)===false){
+        if (validateImageUrl(allLevels[i].querySelector('.LevelConfig input:nth-child(3)').value) === false) {
             alert("Preencha os dados corretamente");
             return;
         }
-        if((allLevels[i].querySelector('.LevelConfig input:nth-child(4)').value).length < 30){
+        if ((allLevels[i].querySelector('.LevelConfig input:nth-child(4)').value).length < 30) {
             alert("Preencha os dados corretamente");
             return;
         }
     }
-    if(somaAux === 0){
+    if (somaAux === 0) {
         alert("Preencha os dados corretamente");
         return;
     }
-    for(let i=0; i<allLevels.length; i++){
-        let lvlObj = {title:allLevels[i].querySelector('.LevelConfig input:nth-child(1)').value,
-                        image:allLevels[i].querySelector('.LevelConfig input:nth-child(3)').value,
-                        text:allLevels[i].querySelector('.LevelConfig input:nth-child(4)').value,
-                        minValue:Number(allLevels[i].querySelector('.LevelConfig input:nth-child(2)').value)};
+    for (let i = 0; i < allLevels.length; i++) {
+        let lvlObj = {
+            title: allLevels[i].querySelector('.LevelConfig input:nth-child(1)').value,
+            image: allLevels[i].querySelector('.LevelConfig input:nth-child(3)').value,
+            text: allLevels[i].querySelector('.LevelConfig input:nth-child(4)').value,
+            minValue: Number(allLevels[i].querySelector('.LevelConfig input:nth-child(2)').value)
+        };
         newQuizz.levels.push(lvlObj);
     }
     console.log(newQuizz);
@@ -568,27 +613,32 @@ function createQuizz(){
 
 
 //  screen number six - end of quiz creation - outset //  
-function finalizeQuizz(){
+function finalizeQuizz() {
     const promise = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", newQuizz);
     promise.then(sucessoQuizz);
     promise.catch(fracassoQuizz);
 }
 
-function sucessoQuizz(dados){
+function sucessoQuizz(dados) {
     console.log(dados);
     document.querySelector('.screennumberfive').classList.add('hidden');
     document.querySelector('.screennumbersix').classList.remove('hidden');
     document.querySelector('.finalizequizz img').src = dados.data.image;
     document.querySelector('.finalizequizz h3').innerHTML = `<br><br><br><br><br><br><br><br>&nbsp&nbsp&nbsp&nbsp&nbsp${dados.data.title}`;
     idCurrentQuizz = dados.data.id;
+
+    userQuizzes.push(idCurrentQuizz);
+
+    const userQuizzesSerializado = JSON.stringify(userQuizzes);
+    localStorage.setItem("userQuizzesIds", userQuizzesSerializado);
 }
 
-function fracassoQuizz(dados){
+function fracassoQuizz(dados) {
     console.log(dados);
     console.log("Deu ruim pra mandar o quiz!!!");
 }
 
-function playQuizz(){
+function playQuizz() {
     document.querySelector('.screennumbersix').classList.add('hidden');
     startScreen2(idCurrentQuizz);
 }
