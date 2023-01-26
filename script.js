@@ -469,12 +469,103 @@ function proceedToLevels(){
 //  screen number five - create levels - outset // 
 
 function showInputsLevels(){
-    const numLevels = Number(document.querySelector("#quizzlevels").value);
-    for(let i = 0; i<numLevels; i++){}
+    numLevels = Number(document.querySelector("#quizzlevels").value);
+    for(let i = 0; i<numLevels; i++){
+        if(i===0){
+            document.querySelector('.Levels').innerHTML += 
+            `<div class="subcontainer2" onclick="openLevel(this)">
+            <div class="LevelNumber">
+              <div class="LevelWindow">
+                <div class="ToClickTwo">
+                  <h3>Nível ${i+1}</h3>
+                  <ion-icon class="hidden"onclick="openadhide(this)" name="create-outline"></ion-icon>
+                </div>
+              </div>
+              <div class="LevelConfig">
+                <input placeholder="Título do nível" type="text">
+                <input placeholder="% de acerto mínima" type="text">
+                <input placeholder="URL da imagem do nível" type="url">
+                <input placeholder="Descrição do nível" type="text">
+              </div>
+            </div> `;
+        }else{
+            document.querySelector('.Levels').innerHTML += 
+            `<div class="subcontainer2" onclick="openLevel(this)">
+                <div class="LevelNumber">
+                    <div class="LevelWindow">
+                        <div class="ToClickTwo">
+                            <h3>Nível ${i+1}</h3>
+                            <ion-icon name="create-outline"></ion-icon>
+                        </div>
+                    </div>
+                    <div class="hidden">
+                        <div class="LevelConfig">
+                            <input placeholder="Título do nível" type="text">
+                            <input placeholder="% de acerto mínima" type="text">
+                            <input placeholder="URL da imagem do nível" type="url">
+                            <input placeholder="Descrição do nível" type="text">
+                        </div>
+                    </div>
+            </div> `;
+        }
+    
+    }
+}
+
+function openLevel(qual){
+    if(qual.classList.contains('markedQ'))
+        return;
+    qual.querySelector('.hidden').classList.remove('hidden');
+    qual.querySelector('ion-icon').classList.add('hidden');
+    qual.classList.add('markedQ');
+}
+
+function createQuizz(){
+    let somaAux = 0;
+    const allLevels = document.querySelectorAll('.subcontainer2');
+    for(let i=0; i<allLevels.length; i++){
+        if((allLevels[i].querySelector('.LevelConfig input:nth-child(1)').value).length < 10){
+            alert("Preencha os dados corretamente");
+            return;
+        }
+        if(Number(allLevels[i].querySelector('.LevelConfig input:nth-child(2)').value)<0 ||
+             Number(allLevels[i].querySelector('.LevelConfig input:nth-child(2)').value)>100){
+            alert("Preencha os dados corretamente");
+            return;
+        }
+        if(Number(allLevels[i].querySelector('.LevelConfig input:nth-child(2)').value) === 0 ){
+            somaAux++;
+        }
+        if(validateImageUrl(allLevels[i].querySelector('.LevelConfig input:nth-child(3)').value)===false){
+            alert("Preencha os dados corretamente");
+            return;
+        }
+        if((allLevels[i].querySelector('.LevelConfig input:nth-child(4)').value).length < 30){
+            alert("Preencha os dados corretamente");
+            return;
+        }
+    }
+    if(somaAux === 0){
+        alert("Preencha os dados corretamente");
+        return;
+    }
+    for(let i=0; i<allLevels.length; i++){
+        let lvlObj = {title:allLevels[i].querySelector('.LevelConfig input:nth-child(1)').value,
+                        image:allLevels[i].querySelector('.LevelConfig input:nth-child(3)').value,
+                        text:allLevels[i].querySelector('.LevelConfig input:nth-child(4)').value,
+                        minValue:Number(allLevels[i].querySelector('.LevelConfig input:nth-child(2)').value)};
+        newQuizz.levels.push(lvlObj);
+    }
+    document.querySelector('.screennumberfive').classList.add('hidden');
+    document.querySelector('.screennumbersix').classList.remove('hidden');
+    console.log(newQuizz);
+    finalizeQuizz();
 }
 //  screen number five - create levels - end // 
 
 
-
 //  screen number six - end of quiz creation - outset //  
+function finalizeQuizz(){
+
+}
 //  screen number six - end of quiz creation - end // 

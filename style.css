@@ -538,7 +538,7 @@ input {
 }
 
 .LevelsCreator {
-    margin-top: 132px;
+    margin-top: 63px;
 }
 
 h4 {
@@ -553,12 +553,15 @@ h4 {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: Roboto;
 }
 
 .subcontainer2 {
     box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
     background-color: #fafafa;
-    padding-bottom: 38px;
+    padding-bottom: 28px;
+    margin-bottom: 24px;
+    cursor: pointer;
 }
 
 .levelcontainer {
@@ -571,22 +574,29 @@ h4 {
 .ToClickTwo {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding-top: 27px;
     margin-left: 19px;
     margin-right: 17px;
     margin-bottom: 12px;
 }
 
+.ToClickTwo h3{
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 20px;
+}
+
 .ToClick h3 {
     font-size: 20px;
     font-weight: 700;
     line-height: 23px;
+    font-family: Roboto;
 }
 
 .ToClickTwo ion-icon {
     height: 23px;
     width: 25px;
-    display: none;
     cursor: pointer;
 }
 
