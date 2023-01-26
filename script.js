@@ -201,93 +201,93 @@ function errorScreen2(dados) {
 
 
 
- //  screen number three - create quiz - outset // 
+//  screen number three - create quiz - outset // 
 
 
- function validateImageUrl(imageUrl) {
+function validateImageUrl(imageUrl) {
     if (
-      !imageUrl ||
-      !(imageUrl.startsWith("http://") || imageUrl.startsWith("https://"))
+        !imageUrl ||
+        !(imageUrl.startsWith("http://") || imageUrl.startsWith("https://"))
     ) {
-      return false;
+        return false;
     }
-  
-    return true;
-  }
 
- function validateQuizz(quizz) {
+    return true;
+}
+
+function validateQuizz(quizz) {
     if (!quizz.title || quizz.title.length < 20 || quizz.title.length > 65) {
-      showError("Invalid quizz title");
-      return false;
+        showError("Invalid quizz title");
+        return false;
     }
     if (!validateImageUrl(quizz.image)) {
-      showError("Invalid quizz image url");
-      return false;
+        showError("Invalid quizz image url");
+        return false;
     }
     if (!quizz.questions || quizz.questions.length < 3) {
-      showError("Not enough questions");
-      return false;
+        showError("Not enough questions");
+        return false;
     }
     if (!quizz.levels || quizz.levels.length < 2) {
-      showError("Not enough levels");
-      return false;
+        showError("Not enough levels");
+        return false;
     }
- }  
+}
 
- function valuesforcreation(
+function valuesforcreation(
     titlescreenthree,
     imageUrlscreenthree,
     numberOfQuestionsscreenthree,
     numberOfLevelsscreenthree
-  ) {
+) {
     numberOfLevelsscreenthree = Number(numberOfLevelsscreenthree);
     numberOfQuestionsscreenthree = Number(numberOfQuestionsscreenthree);
-  
+
     if (!titlescreenthree || titlescreenthree.length < 20 || titlescreenthree.length > 65) {
-      showError("Invalid quizz title");
-      return false;
+        showError("Invalid quizz title");
+        return false;
     }
     if (!validateImageUrl(imageUrlscreenthree)) {
-      showError("Invalid quizz image url");
-      return false;
+        showError("Invalid quizz image url");
+        return false;
     }
     if (!numberOfQuestionsscreenthree || numberOfQuestionsscreenthree < 3) {
-      showError("Not enough questions");
-      return false;
+        showError("Not enough questions");
+        return false;
     }
     if (!numberOfLevelsscreenthree || numberOfLevelsscreenthree < 2) {
-      showError("Not enough levels");
-      return false;
+        showError("Not enough levels");
+        return false;
     }
-  
-    return true;
-  }
 
-  function proceedpage() {
+    return true;
+}
+
+function proceedpage() {
     const quizztitle = document.querySelector("#quizztitle");
     const quizzimg = document.querySelector("#quizzimg");
     const quizzquestions = document.querySelector("#quizzquestions");
     const quizzlevels = document.querySelector("#quizzlevels");
-  
+
     if (
         valuesforcreation(
-        quizztitle.value,
-        quizzimg.value,
-        quizzquestions.value,
-        quizzlevels.value
-      )
+            quizztitle.value,
+            quizzimg.value,
+            quizzquestions.value,
+            quizzlevels.value
+        )
     ) {
-      const question = {
-        title: quizztitle.value,
-        image: quizzimg.value,
-        numberOfQuestions: Number(quizzquestions.value),
-        numberOfLevels: Number(quizzlevels.value),
-      };
-     // a preencher //
+        const question = {
+            title: quizztitle.value,
+            image: quizzimg.value,
+            numberOfQuestions: Number(quizzquestions.value),
+            numberOfLevels: Number(quizzlevels.value),
+        };
+        // a preencher //
     } else {
-      alert("Quizz Inválido");
+        alert("Quizz Inválido");
     }
-  }
+}
 
 
 //  screen number three - create quiz - end // 
@@ -295,6 +295,9 @@ function errorScreen2(dados) {
 
 
 // screen number four - create questions - outset // 
+
+
+
 //  screen number four - create questions - end // 
 
 

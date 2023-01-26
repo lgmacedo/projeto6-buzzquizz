@@ -397,15 +397,11 @@ input {
     align-items: center;
 }
 
-h4 {
-    margin-bottom: 38px;
-}
-
 .QuestionsCreator {
-    margin-top: 132px;
+    margin-top: 63px;
 }
 
-.QuestionsCreator h4 {
+.QuestionsCreator h2 {
     font-size: 23px;
     font-weight: 700;
     line-height: 27px;
@@ -413,6 +409,7 @@ h4 {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 38px;
 }
 
 .titlescreennumberfour {
@@ -423,28 +420,15 @@ h4 {
 .subcontainer {
     background-color: #ffffff;
     box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.2);
-    margin-bottom: 38px;
+    margin-bottom: 24px;
     max-height: 1500px;
     transition: max-height 500ms;
-}
-
-.QuestionNumber {
-    margin-top: 0px;
+    padding: 0 19px 27px 17px;
 }
 
 .ToClick {
     display: flex;
     justify-content: space-between;
-    padding-top: 27px;
-    margin-left: 19px;
-    margin-right: 17px;
-    margin-bottom: 12px;
-}
-
-.ToClick h3 {
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 23px;
 }
 
 .ToClick ion-icon {
@@ -454,61 +438,44 @@ h4 {
     cursor: pointer;
 }
 
-.QuestionConfig {
-    display: flex;
-    flex-direction: column;
-}
-
-input {
-    width: 564px;
-    height: 46px;
-    border-radius: 5px;
-    border: solid 1px #d1d1d1;
-    background-color: #ffffff;
-    color: #bababa;
-    font-style: italic;
-    line-height: 22px;
-    font-size: 19px;
-    font-weight: 400;
-    margin-left: 19px;
-    margin-right: 17px;
-    margin-bottom: 5px;
-    padding-left: 23px;
-}
-
-.two {
-    margin-bottom: 5%;
-}
-
-.QuizzAnswers {
-    display: flex;
-    flex-direction: column;
-}
-
-.QuizzAnswers h3 {
-    margin-left: 19px;
-    margin-right: 17px;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 23px;
-    margin-top: 28px;
-    margin-bottom: 14px;
-    background-color: #ffffff;
-}
-
+.QuestionConfig,
+.QuizzAnswers,
 .WrongAnswers {
     display: flex;
     flex-direction: column;
 }
 
-.WrongAnswers h3 {
+.containerscreennumberfour input {
+    width: 564px;
+    height: 46px;
+    border-radius: 5px;
+    border: solid 1px #d1d1d1;
+    background-color: #ffffff;
+    margin-left: 19px;
+    margin-right: 17px;
+    margin-bottom: 10px;
+    padding-left: 23px;
+}
+
+.containerscreennumberfour input::placeholder {
+    color: #bababa;
+    font-style: italic;
+    line-height: 22px;
+    font-size: 19px;
+    font-family: 'Roboto';
+
+}
+
+.containerscreennumberfour h3 {
     margin-left: 19px;
     margin-right: 17px;
     font-size: 20px;
-    font-weight: 700;
+    font-family: 'Roboto';
+    font-weight: bold;
     line-height: 23px;
     margin-top: 28px;
     margin-bottom: 14px;
+    color: #000000;
 }
 
 .buttomtwo {
@@ -521,17 +488,16 @@ input {
 .buttomtwo button {
     background-color: #ec362d;
     height: 54px;
-    width: 368px;
+    width: 353px;
     border-radius: 15px;
-    margin-top: 85px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-top: 41px;
+    font-family: 'Roboto';
+    font-style: normal;
     font-size: 21px;
-    font-weight: 400;
     line-height: 25px;
     color: #fff5f4;
     cursor: pointer;
+    border: none;
 }
 
 
