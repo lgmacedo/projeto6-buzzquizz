@@ -136,11 +136,7 @@ function selectAnswer(resposta) {
     if (numberAnswers === numberQuestions) {
         setTimeout(finishCheck, 2000);
     } else {
-        if(todasAsRespostas.length === 2){
-            setTimeout(`document.querySelector('.question .answer-container-2:not(.marked)').parentNode.scrollIntoView()`, 2000);
-        }else{
-            setTimeout(`document.querySelector('.question .answer-container-3-4:not(.marked)').parentNode.scrollIntoView()`, 2000);
-        }
+        setTimeout(`document.querySelector('.question .fixScroll:not(.marked)').parentNode.scrollIntoView()`, 2000);
     }
 }
 
@@ -191,7 +187,7 @@ function successScreen2(dados) {
               <div class="question-title">
                   <p>${arrQuestions[i].title}</p>
               </div>
-              <div class="answer-container-2">
+              <div class="answer-container-2 fixScroll">
                   <div class="answer ${arrAnswers[0].isCorrectAnswer}" onclick="selectAnswer(this)">
                       <img src="${arrAnswers[0].image}">
                       <p>${arrAnswers[0].text}</p>
@@ -210,7 +206,7 @@ function successScreen2(dados) {
               <div class="question-title">
                   <p>${arrQuestions[i].title}</p>
               </div>
-              <div class="answer-container-3-4">
+              <div class="answer-container-3-4 fixScroll">
                   <div class="answer ${arrAnswers[0].isCorrectAnswer}" onclick="selectAnswer(this)">
                       <img src="${arrAnswers[0].image}">
                       <p>${arrAnswers[0].text}</p>
@@ -233,7 +229,7 @@ function successScreen2(dados) {
               <div class="question-title">
                   <p>${arrQuestions[i].title}</p>
               </div>
-              <div class="answer-container-3-4">
+              <div class="answer-container-3-4 fixScroll">
                   <div class="answer ${arrAnswers[0].isCorrectAnswer}" onclick="selectAnswer(this)">
                       <img src="${arrAnswers[0].image}">
                       <p>${arrAnswers[0].text}</p>
