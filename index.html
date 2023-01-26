@@ -54,6 +54,12 @@
       <div class="all-quizzes">
         <h1>Todos os Quizzes</h1>
         <div class="quizzes">
+<<<<<<< HEAD
+=======
+
+        
+
+>>>>>>> 0d28e0ba1f7255c7950e14f7639c97eab3e83a5e
         </div>
       </div> <!--all-quizzes end-->
 
@@ -92,7 +98,7 @@
     <!-- page content - outset-->
 
     <div class="containerscreennumberthree">
-      <div class="QuizzCreator offscreen">
+      <div class="QuizzCreator">
         <div class="titlescreennumberthree">
           <h3> Comece pelo começo </h3>
         </div>
@@ -129,6 +135,7 @@
 
     <!-- page header - end-->
 
+ <!-- page content - outset-->
 
     <div class="containerscreennumberfour">
       <div class="QuestionsCreator">
@@ -174,13 +181,51 @@
     </div>
   </div>
 
+   <!-- page content - end-->
+
   <!-- screen number four - create questions - end -->
 
 
 
   <!-- screen number five - create levels - outset -->
 
-  <div class="screennumberfive"></div>
+  <div class="screennumberfive">
+
+    <header class="title-screen">
+      <h1>BuzzQuizz</h1>
+    </header>
+
+    <!-- page header - end-->
+
+     <!-- page content - outset-->
+
+    <div class="containerscreennumberfive">
+      <div class="LevelsCreator">
+          <h4>Agora, decida os níveis</h4>
+          <div class="Levels">
+              <li class="subcontainer2">
+                  <div class="LevelNumber">
+                      <div class="LevelWindow">
+                          <div class="ToClickTwo">
+                              <h3>Nível</h3>
+                              <ion-icon onclick="openadhide(this)" name="create-outline"></ion-icon>
+                          </div>
+                      </div>    
+                          <div class="LevelConfig">
+                              <input placeholder="Título do nível" type="text">
+                              <input placeholder="% de acerto mínima" type="number">
+                              <input placeholder="URL da imagem do nível" type="url">
+                              <input placeholder="Descrição do nível" type="text">
+                          </div>
+                   </div>
+                  </div>
+              </li>
+              <div class="buttomtwo">
+                  <button onclick="createQuizz()">Finalizar Quizz</button>
+              </div>
+      </div>
+  </div>
+
 
   <!-- screen number five - create levels - end -->
 
@@ -188,7 +233,32 @@
 
   <!-- screen number six - end of quiz creation - outset -->
 
-  <div class="screennumbersix"></div>
+  <div class="screennumbersix">
+
+<!-- page header - outset-->
+
+<header class="title-screen">
+  <h1>BuzzQuizz</h1>
+</header>
+
+<!-- page header - end-->    
+
+    <div class="containerscreennumbersix">
+      <p class="titlescreennumbersix">Seu quizz está pronto</p>
+      <section>
+          <div class="finalizequizz">
+              <img src="img/image.jpg" alt="imagemDoQuizz">
+              <h3>titulo do quizz</h3>
+          </div>
+      </section>       
+      </div>
+      <div class="buttomthree">
+        <button>Acessar Quizz</button>
+      </div>
+      <div class="home">Voltar pra home</div>
+    </div>
+
+  </div>
 
   <!-- screen number six - end of quiz creation - end -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

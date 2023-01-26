@@ -35,7 +35,7 @@ function listAllQuizes() {
     for (let i = 0; i < allQuizzes.length; i++) {
 
         const template = `
-        <div class="quizz">
+        <div class="quizz" onclick="startScreen2(${allQuizzes[i].id})">
             <img src="${allQuizzes[i].image}" />
             <h2 class="quizz-title">${allQuizzes[i].title}</h2>
           </div>
@@ -73,7 +73,14 @@ function quizzReinit() {
 }
 
 function backHome() {
-
+    numberQuestions = 0;
+    numberAnswers = 0;
+    numberCorrect = 0;
+    levels = [];
+    document.querySelector('.screennumbertwo').classList.add('hidden');
+    document.querySelector('.screennumberone').classList.remove('hidden');
+    document.querySelector('.screennumberone').scrollIntoView();
+    startScreen1();
 }
 
 function finishCheck() {
@@ -129,8 +136,8 @@ function selectAnswer(resposta) {
     }
 }
 
-function startScreen2() {
-    const promise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/1");
+function startScreen2(qual) {
+    const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/2`);
     promise.then(successScreen2);
     promise.catch(errorScreen2);
 }
@@ -138,13 +145,19 @@ function startScreen2() {
 function successScreen2(dados) {
     console.log("DEU CERTO!!!");
     console.log(dados);
-    const quizScreen = document.querySelector('.screennumbertwo')
+
+    const quizScreen = document.querySelector('.screennumbertwo');
     levels = dados.data.levels;
+
+    document.querySelector('.screennumberone').classList.add('hidden');
+    quizScreen.classList.remove('hidden');
 
     quizScreen.innerHTML =
         `<header class="title-screen" onclick="startScreen2()">
         <h1>BuzzQuizz</h1>
     </header>`;
+
+    quizScreen.querySelector('header').scrollIntoView();
 
     quizScreen.innerHTML +=
         `<div class="img-title">
