@@ -399,6 +399,7 @@ input {
     line-height: 25px;
     color: #FFF5F4;
     cursor: pointer;
+    border: none;
 }
 
 /* screen number three - create quiz - end */
@@ -427,6 +428,7 @@ input {
     justify-content: center;
     align-items: center;
     margin-bottom: 38px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .titlescreennumberfour {
