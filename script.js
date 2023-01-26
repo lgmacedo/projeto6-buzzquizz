@@ -137,7 +137,7 @@ function selectAnswer(resposta) {
 }
 
 function startScreen2(qual) {
-    const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/2`);
+    const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${qual}`);
     promise.then(successScreen2);
     promise.catch(errorScreen2);
 }
@@ -176,30 +176,74 @@ function successScreen2(dados) {
             arrAnswers[j] = aux;
         }
 
-        quizScreen.innerHTML +=
-            `<div class="question">
-            <div class="question-title">
-                <p>${arrQuestions[i].title}</p>
-            </div>
-            <div class="answer-container">
-                <div class="answer ${arrAnswers[0].isCorrectAnswer}" onclick="selectAnswer(this)">
-                    <img src="${arrAnswers[0].image}">
-                    <p>${arrAnswers[0].text}</p>
-                </div>
-                <div class="answer ${arrAnswers[1].isCorrectAnswer}" onclick="selectAnswer(this)">
-                    <img src="${arrAnswers[1].image}">
-                    <p>${arrAnswers[1].text}</p>
-                </div>
-                <div class="answer ${arrAnswers[2].isCorrectAnswer}" onclick="selectAnswer(this)">
-                    <img src="${arrAnswers[2].image}">
-                    <p>${arrAnswers[2].text}</p>
-                </div>
-                <div class="answer ${arrAnswers[3].isCorrectAnswer}" onclick="selectAnswer(this)">
-                    <img src="${arrAnswers[3].image}">
-                    <p>${arrAnswers[3].text}</p>
-                </div>
-            </div>
-        </div>`;
+        if(arrAnswers.length === 2){
+          quizScreen.innerHTML +=
+              `<div class="question">
+              <div class="question-title">
+                  <p>${arrQuestions[i].title}</p>
+              </div>
+              <div class="answer-container-2">
+                  <div class="answer ${arrAnswers[0].isCorrectAnswer}" onclick="selectAnswer(this)">
+                      <img src="${arrAnswers[0].image}">
+                      <p>${arrAnswers[0].text}</p>
+                  </div>
+                  <div class="answer ${arrAnswers[1].isCorrectAnswer}" onclick="selectAnswer(this)">
+                      <img src="${arrAnswers[1].image}">
+                      <p>${arrAnswers[1].text}</p>
+                  </div>
+              </div>
+          </div>`;
+        }  
+
+        if(arrAnswers.length === 3){
+          quizScreen.innerHTML +=
+              `<div class="question">
+              <div class="question-title">
+                  <p>${arrQuestions[i].title}</p>
+              </div>
+              <div class="answer-container-3-4">
+                  <div class="answer ${arrAnswers[0].isCorrectAnswer}" onclick="selectAnswer(this)">
+                      <img src="${arrAnswers[0].image}">
+                      <p>${arrAnswers[0].text}</p>
+                  </div>
+                  <div class="answer ${arrAnswers[1].isCorrectAnswer}" onclick="selectAnswer(this)">
+                      <img src="${arrAnswers[1].image}">
+                      <p>${arrAnswers[1].text}</p>
+                  </div>
+                  <div class="answer ${arrAnswers[2].isCorrectAnswer}" onclick="selectAnswer(this)">
+                      <img src="${arrAnswers[2].image}">
+                      <p>${arrAnswers[2].text}</p>
+                  </div>
+              </div>
+          </div>`;
+        } 
+
+        if(arrAnswers.length === 4){
+          quizScreen.innerHTML +=
+              `<div class="question">
+              <div class="question-title">
+                  <p>${arrQuestions[i].title}</p>
+              </div>
+              <div class="answer-container-3-4">
+                  <div class="answer ${arrAnswers[0].isCorrectAnswer}" onclick="selectAnswer(this)">
+                      <img src="${arrAnswers[0].image}">
+                      <p>${arrAnswers[0].text}</p>
+                  </div>
+                  <div class="answer ${arrAnswers[1].isCorrectAnswer}" onclick="selectAnswer(this)">
+                      <img src="${arrAnswers[1].image}">
+                      <p>${arrAnswers[1].text}</p>
+                  </div>
+                  <div class="answer ${arrAnswers[2].isCorrectAnswer}" onclick="selectAnswer(this)">
+                      <img src="${arrAnswers[2].image}">
+                      <p>${arrAnswers[2].text}</p>
+                  </div>
+                  <div class="answer ${arrAnswers[3].isCorrectAnswer}" onclick="selectAnswer(this)">
+                      <img src="${arrAnswers[3].image}">
+                      <p>${arrAnswers[3].text}</p>
+                  </div>
+              </div>
+          </div>`;
+        } 
 
         document.querySelector(`.question:last-child .question-title`).style.backgroundColor = arrQuestions[i].color;
     }
