@@ -354,7 +354,7 @@ function showInputsQuestions() {
         </div>
         <div class="QuizzAnswers">
           <h3>Resposta correta</h3>
-          <input id="corretAnswer" placeholder="Resposta correta" type="text" />
+          <input id="correctAnswer" placeholder="Resposta correta" type="text" />
           <input id="imageCorrectAnswer" placeholder="URL da imagem" type="url" />
         </div>
         <div class="WrongAnswers">
@@ -387,7 +387,7 @@ function showInputsQuestions() {
         <div class=hidden>
             <div class="QuizzAnswers">
                 <h3>Resposta correta</h3>
-                <input id="corretAnswer" placeholder="Resposta correta" type="text" />
+                <input id="correctAnswer" placeholder="Resposta correta" type="text" />
                 <input id="imageCorrectAnswer" placeholder="URL da imagem" type="url" />
             </div>
             <div class="WrongAnswers">
@@ -414,20 +414,63 @@ function openQuestion(qual){
     qual.classList.add('markedQ');
 }
 
-function getInputsQuestions() {
+function proceedToLevels(){
+    const allQuestions = document.querySelectorAll('.subcontainer');
+    for(let i=0; i<allQuestions.length; i++){
+        if((allQuestions[i].querySelector('#questionTitle').value).length < 20){
+            alert("Preencha os dados corretamente");
+            return;
+        }
+        if((allQuestions[i].querySelector('#questionColor').value).length !== 7 ||
+            (allQuestions[i].querySelector('#questionColor').value).charAt(0)!=='#'){
+            alert("Preencha os dados corretamente");
+            return;
+        }
+        if((allQuestions[i].querySelector('#correctAnswer').value) === ""){
+            alert("Preencha os dados corretamente");
+            return;
+        }
+        if(validateImageUrl(allQuestions[i].querySelector('#imageCorrectAnswer').value) === false){
+            alert("Preencha os dados corretamente");
+            return;
+        }
+        if((allQuestions[i].querySelector('#wrongAnswer1').value) === ""){
+            alert("Preencha os dados corretamente");
+            return;
+        }
+        if(validateImageUrl(allQuestions[i].querySelector('#imagewrongAnswer1').value) === false){
+            alert("Preencha os dados corretamente");
+            return;
+        }
+    }
+    for(let i=0; i<allQuestions.length; i++){
+        let questObj = {title:allQuestions[i].querySelector('#questionTitle').value,
+                            color:allQuestions[i].querySelector('#questionColor').value};
 
-    const questionTitle = document.getElementById("questionTitle").value;
-    const questionColor = document.getElementById("questionColor").value;
-    const textCorretAnswer = document.getElementById("corretAnswer").value;
-    const imageCorrectAnswer = document.getElementById("imageCorrectAnswer").value;
-    const textWrongAnswer = document.getElementById("wrongAnswer").value;
-    const imageWrongtAnswer = document.getElementById("imageWrongAnswer").value;
+        let answersArr = [];
+        answersArr.push({text:allQuestions[i].querySelector('#correctAnswer').value, image:allQuestions[i].querySelector('#imageCorrectAnswer').value, isCorrectAnswer: true});
+        for(let j=1; j<=3; j++){
+            if(allQuestions[i].querySelector(`#wrongAnswer${j}`).value !== "" && validateImageUrl(allQuestions[i].querySelector(`#imagewrongAnswer${j}`).value)===true){
+                answersArr.push({text:allQuestions[i].querySelector(`#wrongAnswer${j}`).value, image:allQuestions[i].querySelector(`#imagewrongAnswer${j}`).value, isCorrectAnswer: false});
+            }
+        }
+        questObj.answers = answersArr;
+        newQuizz.questions.push(questObj);
+    }
+    console.log(newQuizz);
+    document.querySelector('.screennumberfour').classList.add('hidden');
+    document.querySelector('.screennumberfive').classList.remove('hidden');
+    showInputsLevels();
 }
  //  screen number four - create questions - end //
 
 
 
 //  screen number five - create levels - outset // 
+
+function showInputsLevels(){
+
+}
 //  screen number five - create levels - end // 
 
 
