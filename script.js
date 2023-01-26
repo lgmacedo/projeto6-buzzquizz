@@ -4,6 +4,7 @@ let numberAnswers = 0;
 let numberCorrect = 0;
 let levels = [];
 let allQuizzes = [];
+let idCurrentQuizz = 0;
 
 // screen number one - quiz list - outset --> //  
 
@@ -69,7 +70,7 @@ function quizzReinit() {
     numberCorrect = 0;
     levels = [];
     document.querySelector('.screennumbertwo').scrollIntoView();
-    startScreen2();
+    startScreen2(idCurrentQuizz);
 }
 
 function backHome() {
@@ -138,6 +139,7 @@ function selectAnswer(resposta) {
 
 function startScreen2(qual) {
     const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${qual}`);
+    idCurrentQuizz = qual;
     promise.then(successScreen2);
     promise.catch(errorScreen2);
 }
