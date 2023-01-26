@@ -81,6 +81,7 @@ function backHome() {
     numberCorrect = 0;
     levels = [];
     document.querySelector('.screennumbertwo').classList.add('hidden');
+    document.querySelector('.screennumbersix').classList.add('hidden');
     document.querySelector('.screennumberone').classList.remove('hidden');
     document.querySelector('.screennumberone').scrollIntoView();
     startScreen1();
@@ -556,8 +557,6 @@ function createQuizz(){
                         minValue:Number(allLevels[i].querySelector('.LevelConfig input:nth-child(2)').value)};
         newQuizz.levels.push(lvlObj);
     }
-    document.querySelector('.screennumberfive').classList.add('hidden');
-    document.querySelector('.screennumbersix').classList.remove('hidden');
     console.log(newQuizz);
     finalizeQuizz();
 }
@@ -566,6 +565,27 @@ function createQuizz(){
 
 //  screen number six - end of quiz creation - outset //  
 function finalizeQuizz(){
+    const promise = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", newQuizz);
+    promise.then(sucessoQuizz);
+    promise.catch(fracassoQuizz);
+}
 
+function sucessoQuizz(dados){
+    console.log(dados);
+    document.querySelector('.screennumberfive').classList.add('hidden');
+    document.querySelector('.screennumbersix').classList.remove('hidden');
+    document.querySelector('.finalizequizz img').src = dados.data.image;
+    document.querySelector('.finalizequizz h3').innerHTML = `<br><br><br><br><br><br><br><br>&nbsp&nbsp&nbsp&nbsp&nbsp${dados.data.title}`;
+    idCurrentQuizz = dados.data.id;
+}
+
+function fracassoQuizz(dados){
+    console.log(dados);
+    console.log("Deu ruim pra mandar o quiz!!!");
+}
+
+function playQuizz(){
+    document.querySelector('.screennumbersix').classList.add('hidden');
+    startScreen2(idCurrentQuizz);
 }
 //  screen number six - end of quiz creation - end // 
