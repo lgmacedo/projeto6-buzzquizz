@@ -336,33 +336,82 @@ function showInputsQuestions() {
 
     const numQuestions = Number(document.querySelector("#quizzquestions").value);
 
-    const showInputWrongAnswer = document.querySelector('.WrongAnswer');
-
-    showInputWrongAnswer.innerHTML = '';
-
-    if (numQuestions === 2) {
-        const template = `
-        <h3>Respostas incorretas</h3>
-        <input id="wrongAnswer1" placeholder="Resposta incorreta 1" type="text" />
-        <input id="imagewrongAnswer1" placeholder="URL da imagem 1" type="url" />
-        `
-    } else if (numQuestions === 3) {
-        const template = `
-        <h3>Respostas incorretas</h3>
-              <input id="wrongAnswer1" placeholder="Resposta incorreta 1" type="text" />
-              <input id="imagewrongAnswer1" placeholder="URL da imagem 1" type="url" />
-              <input id="wrongAnswer2" placeholder="Resposta incorreta 2" type="text" />
-              <input id="imagewrongAnswer2" placeholder="URL da imagem 2" type="url" />`
-    } else if (numQuestions === 4) {
-        const template = `
-        <<h3>Respostas incorretas</h3>
-        <input id="wrongAnswer1" placeholder="Resposta incorreta 1" type="text" />
-        <input id="imagewrongAnswer1" placeholder="URL da imagem 1" type="url" />
-        <input id="wrongAnswer2" placeholder="Resposta incorreta 2" type="text" />
-        <input id="imagewrongAnswer2" placeholder="URL da imagem 2" type="url" />
-        <input id="wrongAnswer3" placeholder="Resposta incorreta 3" type="text" />
-        <input id="imagewrongAnswer3" placeholder="URL da imagem 3" type="url" />`
+    for(let i = 0; i<numQuestions; i++){
+        if(i===0){
+        document.querySelector('.Questions').innerHTML +=
+        `<div class="subcontainer">
+        <div class="QuestionNumber">
+          <div class="QuestionWindow">
+            <div class="ToClick">
+              <h3>Pergunta ${i+1}</h3>
+              <ion-icon class = "hidden" name="create-outline"></ion-icon>
+            </div>
+            <div class="QuestionConfig">
+              <input id="questionTitle" placeholder="Texto da pergunta" type="text" />
+              <input id="questionColor" placeholder="Cor de fundo da pergunta" type="text" />
+            </div>
+          </div>
+        </div>
+        <div class="QuizzAnswers">
+          <h3>Resposta correta</h3>
+          <input id="corretAnswer" placeholder="Resposta correta" type="text" />
+          <input id="imageCorrectAnswer" placeholder="URL da imagem" type="url" />
+        </div>
+        <div class="WrongAnswers">
+          <h3>Respostas incorretas</h3>
+          <input id="wrongAnswer1" placeholder="Resposta incorreta 1" type="text" />
+          <input id="imagewrongAnswer1" placeholder="URL da imagem 1" type="url" />
+          <input id="wrongAnswer2" placeholder="Resposta incorreta 2" type="text" />
+          <input id="imagewrongAnswer2" placeholder="URL da imagem 2" type="url" />
+          <input id="wrongAnswer3" placeholder="Resposta incorreta 3" type="text" />
+          <input id="imagewrongAnswer3" placeholder="URL da imagem 3" type="url" />
+        </div>
+        </div>`;
+        }else{
+        document.querySelector('.Questions').innerHTML +=
+        `<div class="subcontainer" onclick="openQuestion(this)">
+            <div class="QuestionNumber">
+                <div class="QuestionWindow">
+                    <div class="ToClick">
+                        <h3>Pergunta ${i+1}</h3>
+                        <ion-icon name="create-outline"></ion-icon>
+                    </div>
+                <div class="hidden">
+                    <div class="QuestionConfig">
+                        <input id="questionTitle" placeholder="Texto da pergunta" type="text" />
+                        <input id="questionColor" placeholder="Cor de fundo da pergunta" type="text" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=hidden>
+            <div class="QuizzAnswers">
+                <h3>Resposta correta</h3>
+                <input id="corretAnswer" placeholder="Resposta correta" type="text" />
+                <input id="imageCorrectAnswer" placeholder="URL da imagem" type="url" />
+            </div>
+            <div class="WrongAnswers">
+                <h3>Respostas incorretas</h3>
+                <input id="wrongAnswer1" placeholder="Resposta incorreta 1" type="text" />
+                <input id="imagewrongAnswer1" placeholder="URL da imagem 1" type="url" />
+                <input id="wrongAnswer2" placeholder="Resposta incorreta 2" type="text" />
+                <input id="imagewrongAnswer2" placeholder="URL da imagem 2" type="url" />
+                <input id="wrongAnswer3" placeholder="Resposta incorreta 3" type="text" />
+                <input id="imagewrongAnswer3" placeholder="URL da imagem 3" type="url" />
+            </div>
+        </div>
+        </div>`;
+        }
     }
+}
+
+function openQuestion(qual){
+    if(qual.classList.contains('markedQ'))
+        return;
+    qual.querySelector('.hidden').classList.remove('hidden');
+    qual.querySelector('.hidden').classList.remove('hidden');
+    qual.querySelector('ion-icon').classList.add('hidden');
+    qual.classList.add('markedQ');
 }
 
 function getInputsQuestions() {
