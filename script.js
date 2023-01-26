@@ -136,7 +136,11 @@ function selectAnswer(resposta) {
     if (numberAnswers === numberQuestions) {
         setTimeout(finishCheck, 2000);
     } else {
-        setTimeout(`document.querySelector('.question .answer-container:not(.marked)').parentNode.scrollIntoView()`, 2000);
+        if(todasAsRespostas.length === 2){
+            setTimeout(`document.querySelector('.question .answer-container-2:not(.marked)').parentNode.scrollIntoView()`, 2000);
+        }else{
+            setTimeout(`document.querySelector('.question .answer-container-3-4:not(.marked)').parentNode.scrollIntoView()`, 2000);
+        }
     }
 }
 
