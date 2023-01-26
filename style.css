@@ -10,6 +10,10 @@ body {
     background-color: #FAFAFA;
 }
 
+::placeholder{
+    font-style: italic;
+}
+
 .title-screen {
     background-color: #EC362D;
     width: 100%;
@@ -360,8 +364,8 @@ input {
     border-radius: 5px;
     border: solid 1px #D1D1D1;
     background-color: #FFFFFF;
-    color: #BABABA;
-    font-style: italic;
+    color: black;
+    font-style: normal;
     line-height: 22px;
     font-size: 19px;
     font-weight: 400;
@@ -597,8 +601,8 @@ input {
     border-radius: 5px;
     border: solid 1px #d1d1d1;
     background-color: #ffffff;
-    color: #bababa;
-    font-style: italic;
+    color: black;
+    font-style: normal;
     line-height: 22px;
     font-size: 19px;
     font-weight: 400;

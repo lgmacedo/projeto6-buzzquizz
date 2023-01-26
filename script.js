@@ -469,7 +469,8 @@ function proceedToLevels(){
 //  screen number five - create levels - outset // 
 
 function showInputsLevels(){
-
+    const numLevels = Number(document.querySelector("#quizzlevels").value);
+    for(let i = 0; i<numLevels; i++){}
 }
 //  screen number five - create levels - end // 
 
