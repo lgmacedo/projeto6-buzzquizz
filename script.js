@@ -319,10 +319,6 @@ function validateImageUrl(imageUrl) {
 
 function showError(error) {
     alert(`Invalid quizz: ${error}`);
-    document.querySelector("#quizztitle").value = "";
-    document.querySelector("#quizzimg").value = "";
-    document.querySelector("#quizzquestions").value = "";
-    document.querySelector("#quizzlevels").value = "";
 }
 
 function QuizzConfig() {
