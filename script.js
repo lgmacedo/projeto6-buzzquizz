@@ -56,7 +56,7 @@ function listAllQuizes() {
             <img src="${allQuizzes[i].image}" />
             <h2 class="quizz-title">${allQuizzes[i].title}</h2>
           </div>
-        `
+        `;
 
             quizzes.innerHTML = quizzes.innerHTML + template;
         }
@@ -73,7 +73,7 @@ function listAllQuizes() {
                     <img src="${allQuizzes[i].image}" />
                     <h2 class="quizz-title">${allQuizzes[i].title}</h2>
                     </div>
-                    `
+                    `;
 
                     yourQuizzes.innerHTML = yourQuizzes.innerHTML + templateYourQuizzes;
                 } else {
@@ -82,7 +82,7 @@ function listAllQuizes() {
                     <img src="${allQuizzes[i].image}" />
                     <h2 class="quizz-title">${allQuizzes[i].title}</h2>
                     </div>
-                    `
+                    `;
 
                     quizzes.innerHTML = quizzes.innerHTML + templateAllQuizzes;
                 }
@@ -622,7 +622,9 @@ function sucessoQuizz(dados) {
     document.querySelector('.titlescreennumbersix').scrollIntoView();
 
     const quizzesUpdate = JSON.parse(localStorage.getItem("userQuizzesIds"));
-    userQuizzes = quizzesUpdate;
+    if(quizzesUpdate !== null){
+        userQuizzes = quizzesUpdate;
+    }
     userQuizzes.push(idCurrentQuizz);
 
     const userQuizzesSerializado = JSON.stringify(userQuizzes);
