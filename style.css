@@ -51,6 +51,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    margin-bottom: 77px;
 }
 
 .none-quiz p {
@@ -77,11 +78,6 @@ body {
     cursor: pointer;
 }
 
-
-.all-quizzes {
-    margin-top: 77px;
-}
-
 .all-quizzes h1,
 .your-quizzes h1 {
     color: #000000;
@@ -93,6 +89,9 @@ body {
     margin-bottom: 12px;
 }
 
+.your-quizzes{
+    margin-bottom: 48px;
+}
 
 .your-quizzes h1 {
     margin-top: 5px;
