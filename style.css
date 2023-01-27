@@ -737,3 +737,74 @@ input {
 }
 
 /* screen number six - end of quiz creation - end */
+
+@media screen and (max-width: 375px) {
+
+    .screennumberone, .screennumberonetwo, 
+    .screennumberthree, .screennumberfour, 
+    .screennumberfive, .screennumbersix,
+     header, .QuizzCreator, .question,
+    .QuestionsCreator, .QuestionConfig, 
+    .QuizzAnswers .WrongAnswers,
+    .QuestionWindow, .QuestionNumber
+     {
+        width: 375px;
+        height: 100%;
+    }
+
+    .screennumberone header{
+       margin-bottom: -12%;
+    }
+    .screennumberthree header{
+        margin-bottom: -30%;
+    }
+    .screennumberfour header, .screennumbersix header{
+        margin-bottom: -10%;
+    }
+
+    .box-none-quiz,.content-screen-one, 
+    .all-quizzes, .quizzes,
+    .gameScore, .finalizequizz,
+    .question-title, .scoreTitle,
+    .scoreContainer, .finalizequizz img,
+    .section
+    {
+        max-width: 340px;
+        width: 100%;
+    }
+    .question, .answer-container-2, .answer-container-3-4, .answer{
+        height: 436px;
+    }
+
+    .all-quizzes, .quizze{
+        margin-left: 2px;
+    }
+    .necessaryinformations, .Questions, .Levels{
+        width: 375px;
+        height: 256px;
+        
+    }
+    input, .QuestionConfig input, .QuizzAnswers input, .WrongAnswers input {
+        max-width: 340px;
+        width: 100%;
+        height: 46px;
+        margin-left: -1px;
+    }
+    .LevelConfig input{
+        max-width: 340px;
+        width: 100%;
+        height: 46px;
+        margin-left: 5px;
+    }
+    .thebutton button {
+        width: 325px;
+        margin-left: 3px;
+    }
+    .buttomtwo button,.buttomthree button{
+        width: 325px;
+    }
+    .ToClick{
+        width: 350px;
+    }
+    
+  }
