@@ -616,7 +616,8 @@ function sucessoQuizz(dados) {
     document.querySelector('.screennumberfive').classList.add('hidden');
     document.querySelector('.screennumbersix').classList.remove('hidden');
     document.querySelector('.finalizequizz img').src = dados.data.image;
-    document.querySelector('.finalizequizz h3').innerHTML = `<br><br><br><br><br><br><br><br>&nbsp&nbsp&nbsp&nbsp&nbsp${dados.data.title}`;
+    document.querySelector('.finalizequizz h3').innerHTML += `${dados.data.title}`;
+    document.querySelector('.divFix h3').innerHTML += `${dados.data.title}`;
     idCurrentQuizz = dados.data.id;
     document.querySelector('.titlescreennumbersix').scrollIntoView();
 
