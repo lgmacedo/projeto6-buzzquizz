@@ -158,6 +158,7 @@ body {
     background: black;
     position: relative;
     margin-bottom: 42px;
+    text-align: center;
 }
 
 .img-title img {
@@ -205,6 +206,7 @@ body {
     font-weight: 700;
     font-size: 23px;
     line-height: 27px;
+    max-width: 90%;
 }
 
 .answer-container-2 {
@@ -274,6 +276,8 @@ body {
     font-weight: 700;
     font-size: 23px;
     line-height: 27px;
+    text-align: center;
+    max-width: 90%;
 }
 
 .scoreContainer {
@@ -738,7 +742,7 @@ input {
 
 /* screen number six - end of quiz creation - end */
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 430px) {
 
     .screennumberone, .screennumberonetwo, 
     .screennumberthree, .screennumberfour, 
@@ -748,33 +752,216 @@ input {
     .QuizzAnswers .WrongAnswers,
     .QuestionWindow, .QuestionNumber
      {
-        width: 375px;
+        width: 100%;
         height: 100%;
     }
 
     .screennumberone header{
-       margin-bottom: -12%;
+       margin-bottom: 10px;
     }
     .screennumberthree header{
-        margin-bottom: -30%;
+        margin-bottom: 30px;
     }
     .screennumberfour header, .screennumbersix header{
-        margin-bottom: -10%;
+        margin-bottom: 30px;
     }
 
     .box-none-quiz,.content-screen-one, 
-    .all-quizzes, .quizzes,
-    .gameScore, .finalizequizz,
-    .question-title, .scoreTitle,
-    .scoreContainer, .finalizequizz img,
-    .section
+    .all-quizzes, .quizzes
     {
         max-width: 340px;
         width: 100%;
     }
-    .question, .answer-container-2, .answer-container-3-4, .answer{
-        height: 436px;
+    
+    /* ================ SCREEN 2 RESPONSIVIDADE ============================= */
+
+    .img-title {
+        height: 142px;
+        background: black;
+        position: relative;
+        margin-bottom: 24px;
+        text-align: center;
     }
+    
+    .img-title img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        opacity: 0.6;
+    }
+    
+    .img-title p {
+        max-width: 80%;
+        color: #FFFFFF;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 25px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .question {
+        width: 100%;
+        background-color: #FFFFFF;
+        margin: 0 auto 28px;
+        padding-top: 18px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    }
+    
+    .question-title {
+        width: 90.67%;
+        min-height: 89px;
+        margin: 0 auto;
+        background-color: blue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .question-title p {
+        color: #FFFFFF;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        font-size: 19px;
+        line-height: 22px;
+        max-width: 90%;
+    }
+    
+    .answer-container-2 {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 12px;
+        row-gap: 12px;
+        padding: 13px 18px 23px;
+    }
+    
+    .answer-container-3-4 {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 12px;
+        row-gap: 12px;
+        padding: 13px 18px 23px;
+    }
+    
+    .answer {
+        min-height: 50px;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        overflow: hidden;
+    }
+    
+    .answer img {
+        width: 100%;
+        height: 113px;
+        object-fit: cover;
+    }
+    
+    .answer p {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        line-height: 15.30px;
+        color: black;
+        margin-top: 10px;
+    }
+    
+    .gameScore {
+        width: 100%;
+        background-color: #FFFFFF;
+        margin: 0 auto 34px;
+        padding-top: 18px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    }
+    
+    .scoreTitle {
+        width: 90.67%;
+        min-height: 99px;
+        margin: 0 auto;
+        background-color: #EC362D;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .scoreTitle p {
+        color: #FFFFFF;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        font-size: 19px;
+        line-height: 22px;
+        text-align: center;
+        max-width: 90%;
+    }
+    
+    .scoreContainer {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 9px 19px 14px;
+    }
+    
+    .scoreContainer img {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    .scoreContainer p {
+        color: #484848;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        font-size: 17px;
+        line-height: 20px;
+    }
+    
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .buttonReinit {
+        width: 220px;
+        height: 44px;
+        background-color: #EC362D;
+        border: none;
+        border-radius: 15px;
+        color: #FFF5F4;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 21px;
+        margin-bottom: 8px;
+        cursor: pointer;
+    }
+    
+    .buttonBackHome {
+        width: 220px;
+        height: 44px;
+        background-color: #FAFAFA;
+        border: none;
+        color: #818181;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 21px;
+        margin-bottom: 66px;
+        cursor: pointer;
+    }
+
+    /* =============================================================================*/
 
     .all-quizzes, .quizze{
         margin-left: 2px;
