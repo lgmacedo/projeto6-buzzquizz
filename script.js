@@ -622,7 +622,8 @@ function sucessoQuizz(dados) {
     document.querySelector('.finalizequizz img').src = dados.data.image;
     document.querySelector('.finalizequizz h3').innerHTML = `<br><br><br><br><br><br><br><br>&nbsp&nbsp&nbsp&nbsp&nbsp${dados.data.title}`;
     idCurrentQuizz = dados.data.id;
-
+    document.querySelector('.titlescreennumbersix').scrollIntoView;
+    
     userQuizzes.push(idCurrentQuizz);
 
     const userQuizzesSerializado = JSON.stringify(userQuizzes);
