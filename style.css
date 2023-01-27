@@ -744,34 +744,127 @@ input {
 
 @media screen and (max-width: 430px) {
 
-    .screennumberone, .screennumberonetwo, 
-    .screennumberthree, .screennumberfour, 
-    .screennumberfive, .screennumbersix,
-     header, .QuizzCreator, .question,
-    .QuestionsCreator, .QuestionConfig, 
-    .QuizzAnswers .WrongAnswers,
-    .QuestionWindow, .QuestionNumber
-     {
+    /* ================ SCREEN 1 RESPONSIVIDADE ============================= */
+
+    .content-screen-one {
+        margin-top: 31px;
+        margin-left: auto;
+        margin-right: auto;
         width: 100%;
         height: 100%;
+        display: flex;
+        flex-direction: column;
     }
-
-    .screennumberone header{
-       margin-bottom: 10px;
+    
+    .none-quiz {
+        border: 1px dashed #D4D4D4;
+        border-radius: 5px;
+        width: 90.67%;
+        height: 181px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        margin: 0 auto;
     }
-    .screennumberthree header{
-        margin-bottom: 30px;
+    
+    .none-quiz p {
+        color: #B9B9B9;
+        font-family: 'Roboto';
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 23px;
+        text-align: center;
     }
-    .screennumberfour header, .screennumbersix header{
-        margin-bottom: 30px;
+    
+    .none-quiz button {
+        width: 151px;
+        height: 40px;
+        border: 1px dashed #EC362D;
+        border-radius: 50px;
+        text-align: center;
+        color: #EC362D;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-size: 21px;
+        line-height: 23px;
+        background: none;
+        cursor: pointer;
     }
-
-    .box-none-quiz,.content-screen-one, 
-    .all-quizzes, .quizzes
-    {
-        max-width: 340px;
+    
+    
+    .all-quizzes {
+        width: 90.67%;
+        margin: 35px auto 0px;
+    }
+    
+    .all-quizzes h1,
+    .your-quizzes h1 {
+        color: #000000;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-size: 20px;
+        line-height: 23px;
+        font-weight: bold;
+        margin-bottom: 12px;
+    }
+    
+    
+    .your-quizzes h1 {
+        margin-top: 5px;
+    }
+    
+    .your-quizzes ion-icon {
+        width: 30px;
+        height: 30px;
+        color: red;
+        margin-bottom: 12px;
+        margin-left: 10px;
+    }
+    
+    .quizzes {
         width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
     }
+    
+    .quizz img {
+        width: 90.67vw;
+        height: 181px;
+        border-radius: 5px;
+        object-fit: cover;
+    }
+    
+    .quizz {
+        position: relative;
+        width: 100%;
+        height: 181px;
+        margin-bottom: 12px;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+    
+    .quizz .quizz-title {
+        width: 100%;
+        color: #FFFFFF;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-size: 19px;
+        line-height: 22px;
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        padding: 0 0 15px 15px;
+        background-image: linear-gradient(to bottom, rgb(0, 0, 0, 0), rgb(0, 0, 0, 1));
+        border-radius: 5px;
+    }
+    
+    .top-your-quizzes {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }    
     
     /* ================ SCREEN 2 RESPONSIVIDADE ============================= */
 
@@ -962,36 +1055,5 @@ input {
     }
 
     /* =============================================================================*/
-
-    .all-quizzes, .quizze{
-        margin-left: 2px;
-    }
-    .necessaryinformations, .Questions, .Levels{
-        width: 375px;
-        height: 256px;
-        
-    }
-    input, .QuestionConfig input, .QuizzAnswers input, .WrongAnswers input {
-        max-width: 340px;
-        width: 100%;
-        height: 46px;
-        margin-left: -1px;
-    }
-    .LevelConfig input{
-        max-width: 340px;
-        width: 100%;
-        height: 46px;
-        margin-left: 5px;
-    }
-    .thebutton button {
-        width: 325px;
-        margin-left: 3px;
-    }
-    .buttomtwo button,.buttomthree button{
-        width: 325px;
-    }
-    .ToClick{
-        width: 350px;
-    }
     
   }

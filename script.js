@@ -199,7 +199,7 @@ function successScreen2(dados) {
     quizScreen.classList.remove('hidden');
 
     quizScreen.innerHTML =
-        `<header class="title-screen" onclick="startScreen2()">
+        `<header class="title-screen" onclick="location.reload()">
         <h1>BuzzQuizz</h1>
     </header>`;
 
