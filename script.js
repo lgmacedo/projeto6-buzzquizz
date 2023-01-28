@@ -61,9 +61,6 @@ function listAllQuizes() {
             quizzes.innerHTML = quizzes.innerHTML + template;
         }
     } else {
-        document.querySelector('.box-none-quiz').classList.add('hidden');
-        document.querySelector('.your-quizzes').classList.remove('hidden');
-
         for (let i = 0; i < allQuizzes.length; i++) {
 
             for (let j = 0; j < userQuizIdArr.length; j++) {
@@ -87,6 +84,10 @@ function listAllQuizes() {
                     quizzes.innerHTML = quizzes.innerHTML + templateAllQuizzes;
                 }
             }
+        }
+        if(yourQuizzes.innerHTML !== ""){
+            document.querySelector('.box-none-quiz').classList.add('hidden');
+            document.querySelector('.your-quizzes').classList.remove('hidden');
         }
     }
 }
