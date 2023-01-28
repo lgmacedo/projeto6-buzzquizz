@@ -32,6 +32,17 @@ body {
 
 /* screen number one - quiz list - outset --> */
 
+.auxLoadImg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auxLoadImg img{
+    margin-top: 204px;
+    width: 100px;
+}
+
 .content-screen-one {
     margin-top: 77px;
     margin-left: auto;

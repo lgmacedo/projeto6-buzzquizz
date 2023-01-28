@@ -85,16 +85,20 @@ function listAllQuizes() {
                 }
             }
         }
-        if(yourQuizzes.innerHTML !== ""){
-            document.querySelector('.box-none-quiz').classList.add('hidden');
-            document.querySelector('.your-quizzes').classList.remove('hidden');
-        }
     }
+    if(yourQuizzes.innerHTML !== ""){
+        document.querySelector('.box-none-quiz').classList.add('hidden');
+        document.querySelector('.your-quizzes').classList.remove('hidden');
+    }
+    document.querySelector('.screennumberone img').classList.add('hidden');
+    document.querySelector('.auxLoad').classList.remove('hidden');
 }
 
 function goToCreateQuiz() {
     const screen1 = document.querySelector('.screennumberone');
     screen1.classList.add('hidden');
+    document.querySelector('.screennumberone img').classList.remove('hidden');
+    document.querySelector('.auxLoad').classList.add('hidden');
 
     const screen3 = document.querySelector('.screennumberthree');
     screen3.classList.remove('hidden');
@@ -149,13 +153,14 @@ function finishCheck() {
             <p>${levels[qualLevel].text}</p>
         </div>
     </div>`;
-    document.querySelector('.gameScore').scrollIntoView();
 
     quizScreen.innerHTML +=
         `<div class="buttons">
         <button class="buttonReinit" onclick="quizzReinit()">Reiniciar Quizz</button>
         <button class="buttonBackHome" onclick="backHome()">Voltar pra home</button>
     </div>`;
+
+    document.querySelector('.buttonBackHome').scrollIntoView();
 };
 
 function selectAnswer(resposta) {
@@ -197,6 +202,9 @@ function successScreen2(dados) {
     levels = dados.data.levels;
 
     document.querySelector('.screennumberone').classList.add('hidden');
+    document.querySelector('.screennumberone img').classList.remove('hidden');
+    document.querySelector('.auxLoad').classList.add('hidden');
+
     quizScreen.classList.remove('hidden');
 
     quizScreen.innerHTML =
@@ -620,7 +628,7 @@ function sucessoQuizz(dados) {
     document.querySelector('.finalizequizz h3').innerHTML += `${dados.data.title}`;
     document.querySelector('.divFix h3').innerHTML += `${dados.data.title}`;
     idCurrentQuizz = dados.data.id;
-    document.querySelector('.titlescreennumbersix').scrollIntoView();
+    document.querySelector('.screennumbersix header').scrollIntoView();
 
     const quizzesUpdate = JSON.parse(localStorage.getItem("userQuizzesIds"));
     if(quizzesUpdate !== null){
