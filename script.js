@@ -7,7 +7,6 @@ let allQuizzes = [];
 let idCurrentQuizz = 0;
 
 let newQuizz = {};
-let userQuizzes = [];
 
 // screen number one - quiz list - outset --> //  
 
@@ -47,8 +46,22 @@ function listAllQuizes() {
 
     yourQuizzes.innerHTML = '';
 
-    if (userQuizzesIdsSerializado === null) {
+    const novosQuizzes = [];
 
+    if(userQuizzesIdsSerializado !== null){
+        for (let i = 0; i < allQuizzes.length; i++) {
+            for (let j = 0; j < userQuizIdArr.length; j++) {
+                if (allQuizzes[i].id === userQuizIdArr[j]) {
+                    novosQuizzes.push(userQuizIdArr[j]);
+                }
+            }
+        }
+    }
+
+    localStorage.clear();
+    localStorage.setItem("userQuizzesIds", JSON.stringify(novosQuizzes));
+
+    if (novosQuizzes.length === 0) {
         for (let i = 0; i < allQuizzes.length; i++) {
 
             const template = `
@@ -63,8 +76,8 @@ function listAllQuizes() {
     } else {
         for (let i = 0; i < allQuizzes.length; i++) {
 
-            for (let j = 0; j < userQuizIdArr.length; j++) {
-                if (allQuizzes[i].id == userQuizIdArr[j]) {
+            for (let j = 0; j < novosQuizzes.length; j++) {
+                if (allQuizzes[i].id === novosQuizzes[j]) {
                     const templateYourQuizzes = `
                     <div class="quizz" onclick="startScreen2(${allQuizzes[i].id})">
                     <img src="${allQuizzes[i].image}" />
@@ -631,12 +644,9 @@ function sucessoQuizz(dados) {
     document.querySelector('.screennumbersix header').scrollIntoView();
 
     const quizzesUpdate = JSON.parse(localStorage.getItem("userQuizzesIds"));
-    if(quizzesUpdate !== null){
-        userQuizzes = quizzesUpdate;
-    }
-    userQuizzes.push(idCurrentQuizz);
+    quizzesUpdate.push(idCurrentQuizz);
 
-    const userQuizzesSerializado = JSON.stringify(userQuizzes);
+    const userQuizzesSerializado = JSON.stringify(quizzesUpdate);
     localStorage.setItem("userQuizzesIds", userQuizzesSerializado);
 }
 
